@@ -1,39 +1,38 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Conectar ao banco de dados (substitua com suas credenciais)
-    $servername = "localhost";
-    $username = "seu_usuario_mysql";
-    $password = "sua_senha_mysql";
-    $dbname = "nome_do_banco_de_dados";
+// Configuração da conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gymnastic_club";
 
-    // Criar conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexão
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Obter dados do formulário
-    $name = $_POST['name'];
-    $birthday = $_POST['birthday'];
-    $genre = $_POST['genre'];
-    $mobile = $_POST['mobile'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash da senha
-    $address = $_POST['address'];
-    $age_group = $_POST['age_group'];
-
-    // Inserir dados no banco de dados
-    $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, password, address, ageGroup)
-            VALUES ('$name', '$birthday', '$genre', '$mobile', '$email', '$password', '$address', '$age_group')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Athlete registered successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $conn->close();
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
 }
+
+// Obter dados do formulário
+$name = $_POST['name'];
+$birthdate = $_POST['birthdate'];
+$gender = $_POST['gender'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+$address = $_POST['address'];
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$role = $_POST['role'];
+
+// Inserir dados na tabela apropriada
+if ($role == "coach") {
+    $sql = "INSERT INTO CoachingStaff (name, birthday, genre, mobile, email, address, password, function) VALUES ('$name', '$birthdate', '$gender', '$phone', '$email', '$address', '$password', 'Coach')";
+} else {
+    $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup) VALUES ('$name', '$birthdate', '$gender', '$phone', '$email', '$address', '$password', 'Senior')";
+}
+
+if ($conn->query($sql) === TRUE) {
+    echo "Registro realizado com sucesso!";
+} else {
+    echo "Erro: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>

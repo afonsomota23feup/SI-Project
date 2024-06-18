@@ -1,45 +1,46 @@
 <?php
-session_start();
+// Configuração da conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gymnastic_club";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Conectar ao banco de dados (substitua com suas credenciais)
-    $servername = "localhost";
-    $username = "seu_usuario_mysql";
-    $password = "sua_senha_mysql";
-    $dbname = "nome_do_banco_de_dados";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Criar conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
+}
 
-    // Verificar conexão
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+// Obter dados do formulário
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Verificar credenciais
+$sql = "SELECT * FROM CoachingStaff WHERE email='$email'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    if (password_verify($password, $user['password'])) {
+        echo "Login bem-sucedido!";
+    } else {
+        echo "Senha incorreta.";
     }
-
-    // Obter dados do formulário
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Consultar o banco de dados para encontrar o atleta com o email fornecido
+} else {
     $sql = "SELECT * FROM Athlete WHERE email='$email'";
     $result = $conn->query($sql);
-
+    
     if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            // Senha correta, iniciar sessão
-            $_SESSION['logged_in'] = true;
-            $_SESSION['athlete_id'] = $row['idAthlete'];
-            echo "Login successful";
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            echo "Login bem-sucedido!";
         } else {
-            // Senha incorreta
-            echo "Invalid email or password";
+            echo "Senha incorreta.";
         }
     } else {
-        // Atleta não encontrado
-        echo "Invalid email or password";
+        echo "Usuário não encontrado.";
     }
-
-    $conn->close();
 }
+
+$conn->close();
 ?>
