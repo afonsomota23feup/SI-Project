@@ -1,36 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
-    <title>Coaching Staff Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Sistema de Gestão</title>
 </head>
 <body>
-    <h1>Coaching Staff Form</h1>
-    <form action="process_coaching_staff.php" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <header>
+        <h1>Sistema de Gestão de Atletas</h1>
+    </header>
 
-        <label for="birthday">Birthday:</label>
-        <input type="date" id="birthday" name="birthday" required><br><br>
+    <main>
+        <p>Bem-vindo ao sistema de gestão de atletas. Por favor, faça login para continuar.</p>
+        <form action="login.php" method="get">
+            <button type="submit">Login</button>
+        </form>
+    </main>
 
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" required><br><br>
-
-        <label for="mobile">Mobile:</label>
-        <input type="text" id="mobile" name="mobile" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required><br><br>
-
-        <label for="function">Function:</label>
-        <input type="text" id="function" name="function" required><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+    <footer>
+        <p>&copy; 2024 Sistema de Gestão de Atletas</p>
+    </footer>
 </body>
 </html>
