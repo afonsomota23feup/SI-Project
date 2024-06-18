@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competições</title>
+    <link rel="stylesheet"  href="..\static\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Competições</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Registrar Competição</h2>
+            <form action="../backend/register_competition.php" method="post">
+                <label for="name">Nome da Competição:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" required>
+                <label for="start_time">Data de Início:</label>
+                <input type="datetime-local" id="start_time" name="start_time" required>
+                <label for="end_time">Data de Fim:</label>
+                <input type="datetime-local" id="end_time" name="end_time" required>
+                <label for="description">Descrição:</label>
+                <textarea id="description" name="description" required></textarea>
+                <button type="submit">Registar Competição</button>
+            </form>
+        </section>
+        <section>
+            <h2>Próximas Competições</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Local</th>
+                        <th>Data de Início</th>
+                        <th>Data de Fim</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados das competições serão preenchidos aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gymnastic Club Management Software</p>
+    </footer>
+</body>
+</html>

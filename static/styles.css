@@ -1,13 +1,28 @@
+/* Estilos para o corpo da página */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    overflow: hidden; /* Evita rolagem */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 /* Estilos para o cabeçalho e o rodapé */
 header {
     text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* Adicionando transparência ao cabeçalho */
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    font: arial;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 10px 20px;
+    flex-shrink: 0;
 }
 
 /* Estilos para o formulário de login e registro */
@@ -20,13 +35,12 @@ footer {
 .login-btn,
 .signup-btn {
     display: inline-block;
-    width: 80px; /* Reduzindo um pouco a largura dos botões */
+    width: 80px;
     height: 40px;
-    position: relative;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px #111111 solid;
-    margin-left: 10px; /* Adicionando espaço entre os botões */
+    border: 1px solid #111111;
+    margin-left: 10px;
 }
 
 .login-btn a,
@@ -36,39 +50,41 @@ footer {
     height: 100%;
     text-align: center;
     line-height: 40px;
-    color: #111111;
     font-size: 16px;
-    font-family: Poppins;
     font-weight: 400;
     text-decoration: none;
 }
 
+.login-btn a {
+    color: #111111;
+}
+
 .signup-btn {
     background: #111111;
-    color: white;
+}
+
+.signup-btn a {
+    color: #ffffff;
 }
 
 /* Estilos para o banner de boas-vindas */
 .banner-container {
     width: 100%;
-    height: 100vh; /* Alterando a altura para ocupar a tela inteira */
+    flex-grow: 1; /* Permite que o banner cresça para preencher o espaço restante */
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .banner-image {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover; /* Garantindo que a imagem cubra todo o espaço */
+    height: auto; /* Ajusta a altura automaticamente */
 }
 
 .banner-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
     color: white;
 }
@@ -80,4 +96,3 @@ footer {
 .banner-description {
     font-size: 24px;
 }
-

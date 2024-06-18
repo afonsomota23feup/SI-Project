@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet"  href="..\static\styles.css">
+</head>
+<body>
+    <header>
+        <h1>Relatórios</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Relatório de Desempenho dos Atletas</h2>
+            <form action="../backend/generate_report.php" method="post">
+                <label for="athlete">Selecionar Atleta:</label>
+                <select id="athlete" name="athlete">
+                    <!-- Opções de atletas serão preenchidas aqui -->
+                </select>
+                <button type="submit">Gerar Relatório</button>
+            </form>
+        </section>
+        <section>
+            <h2>Desempenho dos Atletas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Flexibilidade</th>
+                        <th>Impulso Vertical</th>
+                        <th>Data do Teste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados dos relatórios serão preenchidos aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gymnastic Club Management Software</p>
+    </footer>
+</body>
+</html>
