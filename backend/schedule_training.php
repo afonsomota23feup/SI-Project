@@ -1,15 +1,6 @@
 <?php
 // Configuração da conexão com o banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gymnastic_club";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
+include 'db_connect.php';
 
 // Obter dados do formulário
 $date = $_POST['date'];

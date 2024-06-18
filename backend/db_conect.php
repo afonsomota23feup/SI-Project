@@ -1,14 +1,13 @@
 <?php
-$servername = "your_server";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
+$db_path = __DIR__ . '/../db/project.db';
 
-// Criar a conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Tentar estabelecer uma conexão com o banco de dados SQLite
+try {
+    $conn = new PDO("sqlite:" . $db_path);
+    // Configurar o PDO para lançar exceções em caso de erro
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit();
 }
 ?>

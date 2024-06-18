@@ -1,14 +1,6 @@
 <?php
-$servername = "your_server";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Configuração da conexão com o banco de dados
+include 'db_connect.php';
 
 $idAthlete = $_POST['athlete'];
 $idCoachingStaff = $_POST['coachingStaff'];
