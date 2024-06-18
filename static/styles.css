@@ -1,0 +1,83 @@
+/* Estilos para o cabeçalho e o rodapé */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Adicionando transparência ao cabeçalho */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos para o formulário de login e registro */
+.login-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.login-btn,
+.signup-btn {
+    display: inline-block;
+    width: 80px; /* Reduzindo um pouco a largura dos botões */
+    height: 40px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px #111111 solid;
+    margin-left: 10px; /* Adicionando espaço entre os botões */
+}
+
+.login-btn a,
+.signup-btn a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: #111111;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.signup-btn {
+    background: #111111;
+    color: white;
+}
+
+/* Estilos para o banner de boas-vindas */
+.banner-container {
+    width: 100%;
+    height: 100vh; /* Alterando a altura para ocupar a tela inteira */
+    position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover; /* Garantindo que a imagem cubra todo o espaço */
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.banner-text {
+    margin-bottom: 20px;
+}
+
+.banner-description {
+    font-size: 24px;
+}
+
