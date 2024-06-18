@@ -2,20 +2,33 @@
 // Configuração da conexão com o banco de dados
 include 'db_connect.php';
 
-// Obter dados do formulário
-$date = $_POST['date'];
-$performance = $_POST['performance'];
-$coach = $_POST['coach'];
-$athlete = $_POST['athlete'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $date = $_POST['date'];
+    $performance = $_POST['performance'];
+    $coach = $_POST['coach'];
+    $athlete = $_POST['athlete'];
 
-// Inserir dados na tabela TrainingReg
-$sql = "INSERT INTO TrainingReg (dateTrainingReg, performance, idCoachingStaff, idAthlete) VALUES ('$date', '$performance', '$coach', '$athlete')";
+    try {
+        // Preparar a consulta SQL usando prepared statements
+        $sql = "INSERT INTO TrainingReg (dateTrainingReg, performance, idCoachingStaff, idAthlete)
+                VALUES (:date, :performance, :coach, :athlete)";
+        $stmt = $conn->prepare($sql);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Sessão de treinamento agendada com sucesso!";
-} else {
-    echo "Erro: " . $sql . "<br>" . $conn->error;
+        // Associar os parâmetros aos valores do formulário
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':performance', $performance);
+        $stmt->bindParam(':coach', $coach);
+        $stmt->bindParam(':athlete', $athlete);
+
+        // Executar a consulta
+        $stmt->execute();
+
+        echo "Sessão de treinamento agendada com sucesso!";
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
+    }
+
+    // Fechar a conexão
+    $conn = null;
 }
-
-$conn->close();
 ?>

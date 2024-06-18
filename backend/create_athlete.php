@@ -12,15 +12,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST["address"];
     $ageGroup = $_POST["ageGroup"];
 
-    $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, password, address, ageGroup)
-            VALUES ('$name', '$birthday', '$genre', '$mobile', '$email', '$password', '$address', '$ageGroup')";
+    try {
+        // Preparar a consulta SQL usando prepared statements
+        $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, password, address, ageGroup)
+                VALUES (:name, :birthday, :genre, :mobile, :email, :password, :address, :ageGroup)";
+        $stmt = $conn->prepare($sql);
 
-    if ($conn->query($sql) === TRUE) {
+        // Associar os parâmetros aos valores do formulário
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':birthday', $birthday);
+        $stmt->bindParam(':genre', $genre);
+        $stmt->bindParam(':mobile', $mobile);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':ageGroup', $ageGroup);
+
+        // Executar a consulta
+        $stmt->execute();
+
         echo "Novo atleta cadastrado com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
     }
 
-    $conn->close();
+    // Fechar a conexão
+    $conn = null;
 }
 ?>
