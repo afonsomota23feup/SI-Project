@@ -30,7 +30,7 @@ CREATE TABLE Discipline (
 
 DROP TABLE IF EXISTS CoachingStaff;
 CREATE TABLE CoachingStaff (
-    idCoachingStaff INT PRIMARY KEY,
+    idCoachingStaff INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255) NOT NULL,
     birthday DATE NOT NULL,
     genre VARCHAR(1) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE CoachingStaff (
 
 DROP TABLE IF EXISTS Athlete;
 CREATE TABLE Athlete (
-    idAthlete INT PRIMARY KEY,
+    idAthlete INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255) NOT NULL,
     birthday DATE NOT NULL,
     genre VARCHAR(1) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE Athlete (
 
 DROP TABLE IF EXISTS ConditionTest;
 CREATE TABLE ConditionTest (
-    idConditionTest INT PRIMARY KEY,
+    idConditionTest INTEGER PRIMARY KEY AUTOINCREMENT,
     idAthlete INT,
     idCoachingStaff INT,
     weight FLOAT NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE ConditionTest (
 
 DROP TABLE IF EXISTS TrainingReg;
 CREATE TABLE TrainingReg (
-    idTrainingReg INT PRIMARY KEY,
+    idTrainingReg INTEGER PRIMARY KEY AUTOINCREMENT,
     idCoachingStaff INT,
     idAthlete INT,
     performance FLOAT NOT NULL,
@@ -108,7 +108,7 @@ CREATE TABLE Notes (
 
 DROP TABLE IF EXISTS Competition;
 CREATE TABLE Competition (
-    idCompetition INT PRIMARY KEY,
+    idCompetition INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(255) NOT NULL,
     local VARCHAR(255) NOT NULL,
     startTime DATETIME NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE Competition (
 
 DROP TABLE IF EXISTS Result;
 CREATE TABLE Result (
-    idCompetition INT,
+    idCompetition INT ,
     idAthlete INT,
     idAparatus INT,
     place INT NOT NULL,

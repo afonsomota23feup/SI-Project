@@ -1,6 +1,6 @@
 <?php
 // Configuração da conexão com o banco de dados
-include 'db_connect.php';
+include __DIR__ . '/db_connect.php'; // Usando __DIR__ para garantir que o caminho é relativo ao diretório atual
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
@@ -13,14 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'];
 
     try {
-        if ($role == "coach") {
-            $sql = "INSERT INTO CoachingStaff (name, birthday, genre, mobile, email, address, password, function)
-                    VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Coach')";
-        } else {
-            $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup)
-                    VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Senior')";
+        // Verificar se a conexão foi bem-sucedida
+        if ($conn === null) {
+            throw new Exception("Falha na conexão com o banco de dados.");
         }
 
+        // Inserir dados na tabela apropriada
+        if ($role == "coach") {
+            $sql = "INSERT INTO CoachingStaff (name, birthday, genre, mobile, email, address, password, function) VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Coach')";
+        } else {
+            $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup) VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Senior')";
+        }
+
+        // Preparar e executar a query
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':birthdate', $birthdate);
@@ -29,13 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':password', $password);
-
         $stmt->execute();
-        echo "Registro realizado com sucesso!";
-    } catch (PDOException $e) {
+
+        echo "<script>alert('Registro realizado com sucesso!');</script>";
+    } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
-
+    // Fechar a conexão
     $conn = null;
+    header("Location: ../index.html");
+    exit;
 }
 ?>
