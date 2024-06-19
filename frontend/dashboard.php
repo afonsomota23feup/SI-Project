@@ -21,31 +21,29 @@ unset($_SESSION['message']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de Funcionalidades</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="..\static\styles.css">
 </head>
 <body>
     <header>
-        <h1>Menu de Funcionalidades</h1>
+        <h1>Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="list_athletes.php">Listar Atletas</a></li>
-            <li><a href="assign_discipline.php">Associar Atleta à Disciplina</a></li>
-            <li><a href="schedule_training.php">Registar Treino</a></li>
-            <li><a href="schedule_competition.php">Marcar Competição</a></li>
-            <li><a href="list_competition.php">Adicionar Resultado</a></li>
-            <li><a href="condition_add.php">Adicionar Avaliação Física</a></li>
-        </ul>
-    </nav>
     <main>
-        <!-- Exibir mensagens de erro ou sucesso -->
-        <?php if (!empty($error_message)): ?>
-            <div class="error"><?php echo $error_message; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($success_message)): ?>
-            <div class="success"><?php echo $success_message; ?></div>
-        <?php endif; ?>
+        <section>
+            <h2>Bem-vindo, [Nome do Usuário]</h2>
+            <ul>
+                <li><a href="atheletemanagement.html">Os meus treinos</a></li>
+                <li><a href="trainingsessions.html">As minhas competições</a></li>
+                <li><a href="competitions.html">As minhas disciplinas</a></li>
+            </ul>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>

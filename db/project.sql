@@ -79,8 +79,7 @@ CREATE TABLE ConditionTest (
     CHECK(height > 0),
     CHECK(backFlexibility > 0),
     CHECK(verticalThrust > 0),
-    CHECK(dateTest LIKE '--')
-);
+    CHECK(dateTest LIKE '%-%-%');
 
 DROP TABLE IF EXISTS TrainingReg;
 CREATE TABLE TrainingReg (

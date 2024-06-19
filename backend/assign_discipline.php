@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             throw new Exception("Falha na conexão com o banco de dados.");
         }
 
-        // relacionamento entre atleta e disciplina
+        // Relacionamento entre atleta e disciplina
         $sql = "INSERT INTO AthleteDiscipline (idAthlete, idDiscipline) 
                 VALUES (:athlete_id, :discipline_id)";
         $stmt = $conn->prepare($sql);
@@ -19,11 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':discipline_id', $discipline_id);
         $stmt->execute();
 
-        echo "<script>alert('Atleta associado à disciplina com sucesso!');</script>";
+        // Definir mensagem de sucesso
+        $_SESSION['success'] = "Atleta associado à disciplina com sucesso!";
+        header("Location: ../frontend/menu_coach.php");
+        exit;
     } catch (Exception $e) {
-        echo "Erro: " . $e->getMessage();
+        // Em caso de erro, definir mensagem de erro e redirecionar
+        $_SESSION['error'] = "Erro: " . $e->getMessage();
+        header("Location: ../frontend/menu_coach.php");
+        exit;
+    } finally {
+        $conn = null;
     }
-
-    $conn = null;
 }
 ?>

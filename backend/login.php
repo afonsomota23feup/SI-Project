@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_name'] = $athlete['name'];
             $_SESSION['user_role'] = 'athlete';
 
-            header("Location: ../frontend/dashboard.html");
+            header("Location: ../frontend/dashboard.php");
             exit;
         }
 
