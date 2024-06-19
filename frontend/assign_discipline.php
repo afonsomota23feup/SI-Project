@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=devicShah, initial-scale=1.0">
     <title>Associar Atleta a Disciplina</title>
     <link rel="stylesheet" href="../static/styles.css">
     <style>
@@ -101,7 +101,6 @@
             </thead>
             <tbody>
                 <?php
-                session_start();
                 include '../backend/db_connect.php';
 
                 try {
@@ -122,9 +121,9 @@
                         echo "<td>{$row['email']}</td>";
                         echo "<td>{$row['address']}</td>";
                         echo "<td>
-                                 <form action='../backend/assign_discipline.php' method='POST'>
+                                 <form action='../backend/assign_discipline.php' method='POST' onsubmit='return validateForm(this);'>
                                      <input type='hidden' name='athlete_id' value='{$row['idAthlete']}'>
-                                     <input type='hidden' name='discipline' value='' id='discipline_id_{$row['idAthlete']}'>
+                                     <input type='hidden' name='discipline' value='' class='disciplineInput'>
                                      <button type='submit'>Associar</button>
                                  </form>
                               </td>";
@@ -167,12 +166,21 @@
         // Função para carregar os atletas baseados na disciplina selecionada
         document.getElementById('disciplineSelect').addEventListener('change', function() {
             var disciplineId = this.value;
-            var forms = document.querySelectorAll('form');
-            forms.forEach(function(form) {
-                var input = form.querySelector('input[name="discipline"]');
+            var inputs = document.querySelectorAll('.disciplineInput');
+            inputs.forEach(function(input) {
                 input.value = disciplineId;
             });
         });
+
+        // Validação do formulário
+        function validateForm(form) {
+            var disciplineSelect = document.getElementById('disciplineSelect');
+            if (disciplineSelect.value === "") {
+                alert("Por favor, selecione uma disciplina antes de associar.");
+                return false;
+            }
+            return true;
+        }
     </script>
 </body>
 </html>
