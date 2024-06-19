@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Adicionar Atleta</title>
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
     <header>
-        <h1>Registro de Atleta</h1>
+        <h1>Adicionar Novo Atleta</h1>
     </header>
     <main>
-        <form action="../backend/register.php" method="post">
+        <form action="../backend/add_athlete.php" method="post">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
             <label for="birthdate">Data de Nascimento:</label>
@@ -27,9 +27,8 @@
             <input type="email" id="email" name="email" required>
             <label for="address">Endereço:</label>
             <input type="text" id="address" name="address" required>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Registar</button>
+            <input type="hidden" name="coach_id" value="<?php echo $_SESSION['user_id']; ?>">
+            <button type="submit">Adicionar Atleta</button>
         </form>
     </main>
     <footer>

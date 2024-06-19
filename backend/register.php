@@ -10,20 +10,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $address = $_POST['address'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $role = $_POST['role'];
+    $age = $today->diff($dob)->y;
 
+    // Determinar o grupo etário com base na idade
+    if ($age >= 18) {
+        $ageGroup = 'Senior';
+    } elseif ($age >= 15) {
+        $ageGroup = 'Juvenil';
+    } elseif ($age >= 12) {
+        $ageGroup = 'Infantil';
+    } else {
+        $ageGroup = 'Outro'; 
+    }
     try {
         // Verificar se a conexão foi bem-sucedida
         if ($conn === null) {
             throw new Exception("Falha na conexão com o banco de dados.");
         }
 
-        // Inserir dados na tabela apropriada
-        if ($role == "coach") {
-            $sql = "INSERT INTO CoachingStaff (name, birthday, genre, mobile, email, address, password, function) VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Coach')";
-        } else {
-            $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup) VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, 'Senior')";
-        }
+        // Inserir dados na tabela Athlete
+        $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup) 
+                VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, :ageGroup)";
 
         // Preparar e executar a query
         $stmt = $conn->prepare($sql);
@@ -34,12 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':ageGroup', $ageGroup);
         $stmt->execute();
 
         echo "<script>alert('Registro realizado com sucesso!');</script>";
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
+
     // Fechar a conexão
     $conn = null;
     header("Location: ../index.html");
