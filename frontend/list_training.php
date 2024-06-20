@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Treinos</title>
+    <title>Listar Treinos</title>
     <link rel="stylesheet" href="../static/styles.css">
     <style>
         table {
@@ -30,10 +30,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Disciplina</th>
-                        <th>Descrição</th>
-                        <th>Ação</th>
+                        <th>Data do Treino</th>
+                        <th>Performance</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,25 +48,23 @@
                         }
 
                         // Consulta para obter os treinos do atleta
-                        $sql = "SELECT T.idTraining, T.date, D.name as discipline, T.description
-                                FROM Training T
-                                JOIN Discipline D ON T.idDiscipline = D.idDiscipline
-                                JOIN AthleteTraining AT ON T.idTraining = AT.idTraining
-                                WHERE AT.idAthlete = :athlete_id";
+                        $sql = "SELECT idTrainingReg, dateTrainingReg, performance
+                                FROM TrainingReg
+                                WHERE idAthlete = :athlete_id
+                                ORDER BY dateTrainingReg DESC";
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':athlete_id', $athlete_id);
                         $stmt->execute();
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo "<tr>";
-                            echo "<td>{$row['date']}</td>";
-                            echo "<td>{$row['discipline']}</td>";
-                            echo "<td>{$row['description']}</td>";
-                            echo "<td><a href='training_details.php?training_id={$row['idTraining']}'>Ver Detalhes</a></td>";
+                            echo "<td>{$row['dateTrainingReg']}</td>";
+                            echo "<td>{$row['performance']}</td>";
+                            echo "<td><a href='training_details.php?training_reg_id={$row['idTrainingReg']}'>Detalhes</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='4'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='3'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;

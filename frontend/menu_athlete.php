@@ -39,9 +39,8 @@ unset($_SESSION['message']);
         <section>
             <h2>Bem-vindo, [Nome do Usuário]</h2>
             <ul>
-                <li><a href="atheletemanagement.html">Os meus treinos</a></li>
-                <li><a href="trainingsessions.html">As minhas competições</a></li>
-                <li><a href="competitions.html">As minhas disciplinas</a></li>
+                <li><a href="list_training.php">Os meus treinos</a></li>
+                <li><a href="list_comp.php">As minhas competições</a></li>
             </ul>
         </section>
     </main>
