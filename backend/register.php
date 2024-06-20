@@ -10,9 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $address = $_POST['address'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+    // Calculate age based on birthdate
+    $dob = new DateTime($birthdate);
+    $today = new DateTime();
     $age = $today->diff($dob)->y;
 
-    // Determinar o grupo etário com base na idade
+    // Determine age group
     if ($age >= 18) {
         $ageGroup = 'Senior';
     } elseif ($age >= 15) {
@@ -22,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $ageGroup = 'Outro'; 
     }
+
     try {
         // Verificar se a conexão foi bem-sucedida
         if ($conn === null) {
