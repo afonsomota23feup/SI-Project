@@ -18,14 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = $today->diff($dob)->y;
 
     // Determinar o grupo etário com base na idade
-    if ($age >= 18) {
+    if ($age >= 17) {
         $ageGroup = 'Senior';
-    } elseif ($age >= 15) {
+    } elseif ($age >= 15  && $age < 17) {
+        $ageGroup = 'Junior';
+    } elseif ($age >= 13 && $age < 15) {
         $ageGroup = 'Juvenil';
-    } elseif ($age >= 12) {
-        $ageGroup = 'Infantil';
+    } elseif ($age >= 11 && $age < 13) {
+        $ageGroup = 'Iniciado';
     } else {
-        $ageGroup = 'Outro'; 
+        $ageGroup = 'Infantil'; 
     }
 
     try {
