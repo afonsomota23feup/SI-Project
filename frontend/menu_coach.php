@@ -36,6 +36,9 @@ unset($_SESSION['message']);
             <li><a href="schedule_competition.php">Marcar Competição</a></li>
             <li><a href="list_competition.php">Adicionar Resultado</a></li>
             <li><a href="condition_add.php">Adicionar Avaliação Física</a></li>
+            <li><a href="list_athelete_training.php">Listar Treinos dos Atletas</a></li>
+            <li><a href="list_athlete_comp.php">Listar Competições dos Atletas</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
     <main>
