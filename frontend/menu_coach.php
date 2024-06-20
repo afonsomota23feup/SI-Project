@@ -50,6 +50,8 @@ unset($_SESSION['message']);
             <div class="success"><?php echo $success_message; ?></div>
         <?php endif; ?>
     </main>
+    <a href="../frontend/registerCoach.php">Sign up a new Coach</a>
+
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>
     </footer>
