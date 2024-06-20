@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatórios</title>
-    <link rel="stylesheet"  href="..\static\styles.css">
+    <link rel="stylesheet"  href="..\css\report.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
         </nav>
     </header>
     <main>
-        <section>
+        <section id="performance-report">
             <h2>Relatório de Desempenho dos Atletas</h2>
             <form action="../backend/generate_report.php" method="post">
                 <label for="athlete">Selecionar Atleta:</label>
@@ -27,7 +27,7 @@
                 <button type="submit">Gerar Relatório</button>
             </form>
         </section>
-        <section>
+        <section id="athlete-performance">
             <h2>Desempenho dos Atletas</h2>
             <table>
                 <thead>
