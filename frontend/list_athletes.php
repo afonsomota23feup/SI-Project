@@ -65,7 +65,11 @@
             </table>
         </div>
     </main>
-    <a href="addAthlete.php">Adicionar Atletas</a>
+    <ul>
+    <li><a href="addAthlete.php">Adicionar Atletas</a></li>
+    <li><a href="assign_discipline.php">Associar Atleta à Disciplina</a></li>
+    <li><a href="condition_add.php">Adicionar Avaliação Física</a></li>
+    <ul>
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>
     </footer>

@@ -66,13 +66,11 @@
 
                 $conn = null;
                 ?>
-
             </select>
         </div>
         <div id="trainingContainer">
+            <!-- Treinos serão exibidos aqui -->
         </div>
-        <button class="add-training-btn" onclick="window.location.href='schedule_training.php'">Adicionar Treino</button>
-
     </main>
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>
@@ -95,5 +93,13 @@
             }
         });
     </script>
+</body>
+</html>
+
+        <button class="add-training-btn" onclick="window.location.href='schedule_training.php'">Adicionar Treino</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gymnastic Club Management Software</p>
+    </footer>
 </body>
 </html>

@@ -21,17 +21,18 @@ unset($_SESSION['message']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Treinos</title>
+    <title>Menu de Funcionalidades</title>
     <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
     <header>
-        <h1>Gestão de Treinos</h1>
+        <h1>Menu de Funcionalidades</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="schedule_training.php">Registar Treino</a></li>
-            <li><a href="list_athelete_training.php">Listar Treinos dos Atletas</a></li>
+            <li><a href="schedule_competition.php">Marcar Competição</a></li>
+            <li><a href="list_competition.php">Adicionar Resultado</a></li>
+            <li><a href="list_athlete_comp.php">Listar Competições dos Atletas</a></li>
             <li><a href="../backend/logout.php">Logout</a></li>
         </ul>
     </nav>

@@ -53,7 +53,7 @@
     </header>
     <main>
         <div class="competition-list">
-            <h2>Lista de Competições</h2>
+            <h2> As Lista de Competições</h2>
             <table>
                 <thead>
                     <tr>

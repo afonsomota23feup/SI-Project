@@ -30,15 +30,10 @@ unset($_SESSION['message']);
     </header>
     <nav>
         <ul>
-            <li><a href="list_athletes.php">Listar Atletas</a></li>
-            <li><a href="assign_discipline.php">Associar Atleta à Disciplina</a></li>
-            <li><a href="schedule_training.php">Registar Treino</a></li>
-            <li><a href="schedule_competition.php">Marcar Competição</a></li>
-            <li><a href="list_competition.php">Adicionar Resultado</a></li>
-            <li><a href="condition_add.php">Adicionar Avaliação Física</a></li>
-            <li><a href="list_athelete_training.php">Listar Treinos dos Atletas</a></li>
-            <li><a href="list_athlete_comp.php">Listar Competições dos Atletas</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="list_athletes.php">Gestão de Atletas</a></li>
+            <li><a href="training_management.php">Gestão de Treinos</a></li>
+            <li><a href="comp.management.php">Gestão de Competições</a></li>
+            <li><a href="../backend/logout.php">Logout</a></li>
         </ul>
     </nav>
     <main>
