@@ -1,17 +1,32 @@
+<?php
+// Configuração da conexão com o banco de dados
+include __DIR__ . '/../backend/db_connect.php'; // Usando __DIR__ para garantir que o caminho é relativo ao diretório atual
+
+// Fetch disciplines to display in the drop-down
+try {
+    $stmt = $conn->prepare("SELECT idDiscipline, name FROM Discipline");
+    $stmt->execute();
+    $disciplines = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    echo "Erro: " . $e->getMessage();
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet"  href="..\css\register.css">
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
     <header>
         <h1>Registro</h1>
     </header>
     <main>
-        <form action="../backend/register.php" method="post">
+        <form action="../backend/register.php" method="POST">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
             <label for="birthdate">Data de Nascimento:</label>
@@ -32,7 +47,15 @@
             <label for="role">Tipo de Usuário:</label>
             <select id="role" name="role">
                 <option value="coach">Treinador</option>
-                <option value="athlete">Atleta</option>
+                <option value="athlete">Coordenador</option>
+            </select>
+            <label for="discipline_id">Disciplina:</label>
+            <select id="discipline_id" name="discipline_id" required>
+                <?php foreach ($disciplines as $discipline): ?>
+                    <option value="<?php echo htmlspecialchars($discipline['idDiscipline']); ?>">
+                        <?php echo htmlspecialchars($discipline['name']); ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
             <button type="submit">Registrar</button>
         </form>

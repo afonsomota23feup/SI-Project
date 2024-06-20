@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Adicionar Atleta</h1>
-    <form action="add_athlete.php" method="POST">
+    <form action="../backend/insert_athlete.php" method="POST">
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required>
         <br>
@@ -38,4 +38,7 @@
         <input type="password" id="password" name="password" required>
         <br>
 
-        <input type="submit
+        <input type="submit" value="Adicionar Atleta">
+    </form>
+</body>
+</html>
