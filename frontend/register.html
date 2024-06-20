@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <title>Register</title>
+    <link rel="stylesheet"  href="..\css\register.css">
 </head>
 <body>
     <header>
-        <h1>Registro de Atleta</h1>
+        <h1>Registro</h1>
     </header>
     <main>
         <form action="../backend/register.php" method="post">
@@ -29,7 +29,12 @@
             <input type="text" id="address" name="address" required>
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Registar</button>
+            <label for="role">Tipo de Usuário:</label>
+            <select id="role" name="role">
+                <option value="coach">Treinador</option>
+                <option value="athlete">Atleta</option>
+            </select>
+            <button type="submit">Registrar</button>
         </form>
     </main>
     <footer>
