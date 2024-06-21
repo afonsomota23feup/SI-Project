@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcar Treino para Atleta</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <style>
-        .note-section {
-            display: none;
-        }
-    </style>
+    <title>Registar para Atleta</title>
+    <link rel="stylesheet" href="../css/schedule_training.css">
 </head>
 <body>
+<div class="container">
     <header>
-        <h1>Marcar Treino para Atleta</h1>
+        <div class="header-content">
+                <h1>Registar para Atleta</h1>
+            </div>
     </header>
+    <div class="logo-content">
+                <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+    </div>
     <main>
         <form action="../backend/schedule_training.php" method="post">
             <label for="athlete">Atleta:</label>
@@ -91,11 +92,11 @@
                 <textarea id="note" name="note" rows="4" placeholder="Digite uma nota"></textarea>
             </div>
 
-            <button type="submit">Marcar Treino</button>
+            <button type="submit">Guardar Treino</button>
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 
     <script>
@@ -104,5 +105,6 @@
             noteSection.style.display = checkbox.checked ? 'block' : 'none';
         }
     </script>
+</div>
 </body>
 </html>

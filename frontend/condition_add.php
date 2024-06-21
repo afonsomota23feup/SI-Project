@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Avaliação</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../css/condition_add.css">
 </head>
 <body>
     <header>
-        <h1>Adicionar Avaliação</h1>
+    <div class="header-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Adicionar Avaliação</h1>
+        </div>
     </header>
     <main>
         <form action="../backend/insert_condition_test.php" method="post">
@@ -56,7 +59,7 @@
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>

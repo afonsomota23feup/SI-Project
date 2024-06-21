@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtAthlete->execute();
         $athlete = $stmtAthlete->fetch(PDO::FETCH_ASSOC);
 
-        if ($athlete && password_verify($password, $athlete['password'])) {
+        if ($athlete && (password_verify($password, $athlete['password']) || $password === $athlete['password'])) {
             $_SESSION['user_id'] = $athlete['id'];
             $_SESSION['user_name'] = $athlete['name'];
             $_SESSION['user_role'] = 'athlete';
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtCoach->execute();
         $coach = $stmtCoach->fetch(PDO::FETCH_ASSOC);
 
-        if ($coach && $password === $coach['password']) {
+        if ($coach && ( $password === $coach['password'] || password_verify($password, $coach['password']))) {
             $_SESSION['user_id'] = $coach['id'];
             $_SESSION['user_name'] = $coach['name'];
             $_SESSION['user_role'] = 'coach';
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Se não encontrou nenhum usuário correspondente, redireciona com erro
-        header("Location: ../frontend/log in.html?error=login_failed");
+        header("Location: ../frontend/login.html?error=login_failed");
         exit;
 
     } catch (Exception $e) {

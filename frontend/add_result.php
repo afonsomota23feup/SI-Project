@@ -37,12 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserir Resultado</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="..\css\add_result.css">
 </head>
+
 <body>
-    <header>
+<header>
+    <div class="header-content">
+        <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
         <h1>Inserir Resultado</h1>
-    </header>
+    </div>
+</header>
+
     <main>
         <form action="../backend/insert_result.php" method="post">
             <input type="hidden" name="competition_id" value="<?php echo $competition_id; ?>">
@@ -93,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>

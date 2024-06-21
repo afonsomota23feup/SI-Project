@@ -1,0 +1,60 @@
+/* Estilos para o menu */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    max-height: 400px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header-logo {
+    max-height: 100%;
+    height: auto;
+    margin-right: 0rem;
+}
+
+header h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.training-details {
+    margin-bottom: 1rem;
+}
+
+.training-details p {
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

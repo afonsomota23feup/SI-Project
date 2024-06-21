@@ -18,18 +18,36 @@ body {
 header {
     background: #333;
     color: #fff;
-    padding: 1rem 0;
-    text-align: center;
+    padding: 1rem;
+    max-height: 400px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header-logo {
+    max-height: 100%;
+    height: auto;
+    margin-right: 0rem;
 }
 
 header h1 {
-    margin-bottom: 1rem;
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    gap: 2rem;
 }
 
 nav a {
@@ -39,7 +57,7 @@ nav a {
 }
 
 nav a:hover {
-    background: #555;
+    background: #B99A45;
     border-radius: 5px;
 }
 

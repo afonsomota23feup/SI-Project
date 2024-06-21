@@ -4,52 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=devicShah, initial-scale=1.0">
     <title>Associar Atleta a Disciplina</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .search-container {
-            margin-bottom: 20px;
-        }
-        .search-container input[type=text] {
-            padding: 6px;
-            margin-top: 8px;
-            font-size: 17px;
-            border: none;
-            width: 80%;
-        }
-        .search-container button {
-            float: right;
-            padding: 6px 10px;
-            margin-top: 8px;
-            margin-right: 16px;
-            background: #ddd;
-            font-size: 17px;
-            border: none;
-            cursor: pointer;
-        }
-        .search-container select {
-            padding: 6px;
-            margin-top: 8px;
-            font-size: 17px;
-            border: none;
-            width: 80%;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/assign_discipline.css">
+
 </head>
 <body>
     <header>
-        <h1>Associar Atleta a Disciplina</h1>
+        <div class="header-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Associar Atleta a Disciplina</h1>
+        </div>
     </header>
     <main>
         <div class="search-container">
@@ -139,7 +102,7 @@
         </table>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 
     <script>

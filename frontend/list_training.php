@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Treinos</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <title>Meus Treinos</title>
+    <link rel="stylesheet" href="../css/list_training.css">
     <style>
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Meus Treinos</h1>
+        <div class="header-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Meus Treinos</h1>
+        </div>
     </header>
     <main>
         <div class="training-list">
@@ -30,9 +38,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Data do Treino</th>
+                        <th>Data</th>
                         <th>Performance</th>
-                        <th>Detalhes</th>
+                        <th>Descrição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,19 +56,20 @@
                         }
 
                         // Consulta para obter os treinos do atleta
-                        $sql = "SELECT idTrainingReg, dateTrainingReg, performance
-                                FROM TrainingReg
-                                WHERE idAthlete = :athlete_id
-                                ORDER BY dateTrainingReg DESC";
+                        $sql = "SELECT tr.*, n.description AS description
+            FROM TrainingReg tr
+            LEFT JOIN Notes n ON tr.idTrainingReg = n.idTrainingReg
+            WHERE tr.idAthlete = :athlete_id";
+
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':athlete_id', $athlete_id);
                         $stmt->execute();
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo "<tr>";
-                            echo "<td>{$row['dateTrainingReg']}</td>";
-                            echo "<td>{$row['performance']}</td>";
-                            echo "<td><a href='training_details.php?training_reg_id={$row['idTrainingReg']}'>Detalhes</a></td>";
+                            echo "<td>" . htmlspecialchars($row['dateTrainingReg']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['performance']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['description']) . "</td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
@@ -74,7 +83,8 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
+
 </html>

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Condition Test Form</title>
+    <link rel="stylesheet" href="../css/createConditionTest.css">
 </head>
 <body>
-    <h1>Condition Test Form</h1>
+    <header>
+    <div class="header-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Formulário de teste de condição</h1>
+        </div>
+    </header>
     <form id="conditionTestForm" action="submit_condition_test.php" method="POST">
         <label for="athlete">Athlete:</label>
         <select id="athlete" name="athlete" required>
@@ -46,5 +54,8 @@
 
         <input type="submit" value="Submit">
     </form>
+        <footer>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
+    </footer>
 </body>
 </html>

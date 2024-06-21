@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%; /* Garante que o html e o body tenham 100% da altura da janela */
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -15,52 +19,37 @@ body {
     min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
 }
 
+/* Ajuste para o header */
 header {
     background: #333;
     color: #fff;
-    padding: 1rem;
-    max-height: 400px;
+    padding: 1rem 0; /* Ajustado para dar mais espaço no topo e no fundo */
+    text-align: center; /* Centraliza o conteúdo do header */
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
 .header-logo {
-    max-height: 100%;
+    max-height: 80px; /* Ajuste de altura máxima para a imagem do logo */
     height: auto;
-    margin-right: 0rem;
+    margin-right: 1rem; /* Espaço entre a imagem e o título */
 }
 
 header h1 {
-    flex: 1;
-    text-align: center;
     margin: 0;
     font-size: 2rem;
+    text-align: center; /* Centraliza o texto dentro do espaço disponível */
+    flex: 1; /* Faz o título ocupar o espaço restante */
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-}
-
-nav a:hover {
-    background: #B99A45;
-    border-radius: 5px;
-}
-
+/* Ajuste para o main */
 main {
     flex: 1; /* Ocupa todo o espaço restante verticalmente */
     display: flex;
@@ -68,6 +57,7 @@ main {
     align-items: center;
     justify-content: flex-start;
     padding: 2rem;
+    width: 100%; /* Garante que o main ocupe toda a largura */
 }
 
 section {
@@ -147,11 +137,9 @@ tfoot {
 }
 
 footer {
-    background-color: #333;
+    background: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 1rem 0;
+    margin-top: auto; /* Garante que o footer fique no final da página */
 }

@@ -1,0 +1,167 @@
+/* Reset de margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    max-height: 400px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header-logo {
+    max-height: 100%;
+    height: auto;
+    margin-right: 0rem;
+}
+
+header h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.athlete-list {
+    max-width: 800px;
+    width: 100%;
+}
+
+.athlete-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead {
+    background: #333;
+    color: #fff;
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #555;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tfoot {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.menuAtletas {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.menuAtletas nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menuAtletas nav ul li {
+    margin: 5px 0;
+    flex: 1;
+}
+
+.menuAtletas nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #6d6d6d;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: block;
+    text-align: center;
+}
+
+.menuAtletas nav ul li a:hover {
+    background-color: #6d6d6d;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container input[type=text],
+.search-container select {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width: 80%;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    background: #333;
+    color: #fff;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-container button:hover {
+    background: #6d6d6d;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}

@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset de margens e preenchimentos */
 * {
     margin: 0;
     padding: 0;
@@ -12,14 +12,14 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
+    min-height: 100vh;
 }
 
 header {
     background: #333;
     color: #fff;
     padding: 1rem;
-    max-height: 400px;
+    text-align: center;
 }
 
 .header-content {
@@ -62,22 +62,18 @@ nav a:hover {
 }
 
 main {
-    flex: 1; /* Ocupa todo o espaço restante verticalmente */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    flex: 1;
     padding: 2rem;
+    text-align: center; /* Centraliza o conteúdo principal */
 }
 
 section {
     background: #fff;
     padding: 2rem;
-    margin: 1rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1 1 100%;
-    max-width: 100%;
+    margin-bottom: 2rem;
+    text-align: left; /* Ajusta o texto para a esquerda */
 }
 
 section h2 {
@@ -89,20 +85,25 @@ section h2 {
 form label {
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-form input,
-form select,
-form button {
+form input[type="text"],
+form input[type="datetime-local"],
+form textarea {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
 }
 
-form button {
+form textarea {
+    resize: vertical;
+}
+
+button {
+    display: inline-block;
     background: #333;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -110,9 +111,10 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: 1rem;
 }
 
-form button:hover {
+button:hover {
     background: #B99A45;
 }
 
@@ -128,30 +130,48 @@ thead {
 }
 
 th, td {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
+    padding: 8px;
+    border: 1px solid #dddddd;
     text-align: left;
 }
 
-th {
-    background: #555;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-tbody tr:nth-child(even) {
-    background: #f9f9f9;
+.search-container {
+    margin: 20px auto; /* Centraliza o container de busca */
+    max-width: 600px; /* Limita a largura para evitar que fique muito largo */
 }
 
-tfoot {
-    text-align: center;
-    padding: 1rem 0;
+.search-container select,
+.search-container input[type=text],
+.search-container button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-container input[type=text] {
+    width: 60%; /* Ajusta a largura do input de busca */
+}
+
+.search-container button {
+    background: #333;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-container button:hover {
+    background: #B99A45;
 }
 
 footer {
-    background-color: #333;
+    background: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 1rem 0;
+    margin-top: auto; /* Garante que o footer fique no final da página */
 }
+
+

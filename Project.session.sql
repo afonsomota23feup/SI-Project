@@ -88,21 +88,38 @@
 --     3
 --   );
 
-CREATE TABLE ConditionTest (
-    idConditionTest INTEGER PRIMARY KEY AUTOINCREMENT,
-    idAthlete INT,
-    idCoachingStaff INT,
-    weight FLOAT NOT NULL,
-    height FLOAT NOT NULL,
-    backFlexibility FLOAT NOT NULL,
-    verticalThrust FLOAT NOT NULL,
-    dateTest DATE NOT NULL,
-    FOREIGN KEY (idAthlete) REFERENCES Athlete(idAthlete),
-    FOREIGN KEY (idCoachingStaff) REFERENCES CoachingStaff(idCoachingStaff),
-    UNIQUE(idConditionTest),
-    CHECK(weight > 0),
-    CHECK(height > 0),
-    CHECK(backFlexibility > 0),
-    CHECK(verticalThrust > 0),
-    CHECK(dateTest LIKE '%-%-%')
-);
+-- CREATE TABLE ConditionTest (
+--     idConditionTest INTEGER PRIMARY KEY AUTOINCREMENT,
+--     idAthlete INT,
+--     idCoachingStaff INT,
+--     weight FLOAT NOT NULL,
+--     height FLOAT NOT NULL,
+--     backFlexibility FLOAT NOT NULL,
+--     verticalThrust FLOAT NOT NULL,
+--     dateTest DATE NOT NULL,
+--     FOREIGN KEY (idAthlete) REFERENCES Athlete(idAthlete),
+--     FOREIGN KEY (idCoachingStaff) REFERENCES CoachingStaff(idCoachingStaff),
+--     UNIQUE(idConditionTest),
+--     CHECK(weight > 0),
+--     CHECK(height > 0),
+--     CHECK(backFlexibility > 0),
+--     CHECK(verticalThrust > 0),
+--     CHECK(dateTest LIKE '%-%-%')
+-- );
+
+-- INSERT INTO CoachingStaff (idCoachingStaff, name, birthday, genre, mobile, email, password, address, function)
+-- VALUES (5, 'Afonso Mota', '2000-06-19', 'M', '912365666', 'afonso2@email.com', '123456', 'Rua do Afonso', 'Treinador'),
+--        (6, 'Eugénia Mota', '2004-10-05', 'F', '912335679', 'eugenia2@email.com', '123456', 'Rua da Eugénia', 'Treinador');
+
+
+-- INSERT INTO CoachingStaffDiscipline (idCoachingStaff, idDiscipline)
+-- VALUES (
+--      5,
+--     5
+--   );
+
+-- INSERT INTO CoachingStaffDiscipline (idCoachingStaff, idDiscipline)
+-- VALUES (
+--      6,
+--     1
+--   );

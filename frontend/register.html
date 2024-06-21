@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Atleta</title>
-    <link rel="stylesheet" href="../css/coach_add_athlete.css">
+    <title>Register</title>
+    <link rel="stylesheet"  href="..\css\register.css">
 </head>
 <body>
     <header>
         <div class="header-content">
             <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
-            <h1>Adicionar Novo Atleta</h1>
+            <h1>Registo</h1>
         </div>
     </header>
     <main>
-        <form action="../backend/add_athlete.php" method="post">
+        <form action="../backend/register.php" method="post">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
             <label for="birthdate">Data de Nascimento:</label>
@@ -30,8 +30,14 @@
             <input type="email" id="email" name="email" required>
             <label for="address">Endereço:</label>
             <input type="text" id="address" name="address" required>
-            <input type="hidden" name="coach_id" value="<?php echo $_SESSION['user_id']; ?>">
-            <button type="submit">Adicionar Atleta</button>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <label for="role">Tipo de Usuário:</label>
+            <select id="role" name="role">
+                <option value="coach">Treinador</option>
+                <option value="athlete">Atleta</option>
+            </select>
+            <button type="submit">Registrar</button>
         </form>
     </main>
     <footer>

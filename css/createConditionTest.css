@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset de margens e preenchimentos */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
+    min-height: 100vh;
 }
 
 header {
@@ -44,65 +44,37 @@ header h1 {
     font-size: 2rem;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-}
-
-nav a:hover {
-    background: #B99A45;
-    border-radius: 5px;
-}
-
 main {
-    flex: 1; /* Ocupa todo o espaço restante verticalmente */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    flex: 1;
     padding: 2rem;
 }
 
-section {
+form {
     background: #fff;
     padding: 2rem;
-    margin: 1rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1 1 100%;
-    max-width: 100%;
-}
-
-section h2 {
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 form label {
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-form input,
-form select,
-form button {
+form input[type="number"],
+form input[type="date"],
+form select {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
 }
 
-form button {
+form input[type="submit"] {
+    display: inline-block;
     background: #333;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -112,46 +84,14 @@ form button {
     transition: background 0.3s;
 }
 
-form button:hover {
+form input[type="submit"]:hover {
     background: #B99A45;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-thead {
+footer {
     background: #333;
     color: #fff;
-}
-
-th, td {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background: #555;
-}
-
-tbody tr:nth-child(even) {
-    background: #f9f9f9;
-}
-
-tfoot {
     text-align: center;
     padding: 1rem 0;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin-top: auto;
 }

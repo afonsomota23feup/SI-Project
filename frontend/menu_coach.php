@@ -1,54 +1,42 @@
-<?php
-session_start();
-
-// Verificar se a variável de sessão 'idCoachingStaff' está definida
-if (!isset($_SESSION['user_id'])) {
-    // Redirecionar o usuário para a página de login ou exibir uma mensagem de erro
-    header("Location: login.html"); // Redireciona para a página de login
-    exit(); // Certifica-se de que o script PHP não continua a ser executado após o redirecionamento
-}
-// Verificar se há mensagens de erro ou sucesso definidas na sessão
-$error_message = isset($_SESSION['error']) ? $_SESSION['error'] : "";
-$success_message = isset($_SESSION['message']) ? $_SESSION['message'] : "";
-
-// Limpar as mensagens da sessão para que sejam exibidas apenas uma vez
-unset($_SESSION['error']);
-unset($_SESSION['message']);
-?>
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu de Funcionalidades</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../css/menu_coach.css">
 </head>
 <body>
-    <header>
-        <h1>Menu de Funcionalidades</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="list_athletes.php">Gestão de Atletas</a></li>
-            <li><a href="training_management.php">Gestão de Treinos</a></li>
-            <li><a href="comp.management.php">Gestão de Competições</a></li>
-            <li><a href="../backend/logout.php">Logout</a></li>
-        </ul>
-    </nav>
-    <main>
-        <!-- Exibir mensagens de erro ou sucesso -->
-        <?php if (!empty($error_message)): ?>
-            <div class="error"><?php echo $error_message; ?></div>
-        <?php endif; ?>
-        <?php if (!empty($success_message)): ?>
-            <div class="success"><?php echo $success_message; ?></div>
-        <?php endif; ?>
-    </main>
-    <a href="../frontend/registerCoach.php">Sign up a new Coach</a>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Menu de Funcionalidades</h1>
+            </div>
+        </header>
+        <div class="logo-container">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="list_athletes.php">Atletas</a></li>
+                <li><a href="schedule_competition.php">Marcar Competição</a></li>
+                <li><a href="registerCoach.php">Registar Novo Treinador</a></li>
 
-    <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
-    </footer>
+            </ul>
+        </nav>
+        <main>
+            <!-- Exibir mensagens de erro ou sucesso -->
+            <?php if (!empty($error_message)): ?>
+                <div class="error"><?php echo $error_message; ?></div>
+            <?php endif; ?>
+            <?php if (!empty($success_message)): ?>
+                <div class="success"><?php echo $success_message; ?></div>
+            <?php endif; ?>
+        </main>
+        <footer>
+            <p>&copy; 2024 Gravity Masters Management Software</p>
+        </footer>
+    </div>
 </body>
 </html>
+

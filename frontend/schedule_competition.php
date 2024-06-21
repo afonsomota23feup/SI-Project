@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcar Competição</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../css/schedule_competition.css">
 </head>
 <body>
     <header>
-        <h1>Marcar Competição</h1>
+        <div class="header-content">
+                <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+                <h1>Marcar Competição</h1>
+            </div>
     </header>
     <main>
         <form action="../backend/schedule_competition.php" method="post">
@@ -26,7 +29,7 @@
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>

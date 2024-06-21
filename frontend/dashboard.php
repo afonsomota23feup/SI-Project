@@ -31,7 +31,7 @@ unset($_SESSION['message']);
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="../backend/logout.php">Logout</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -39,13 +39,14 @@ unset($_SESSION['message']);
         <section>
             <h2>Bem-vindo, [Nome do Usuário]</h2>
             <ul>
-                <li><a href="list_training.php">Os meus treinos</a></li>
-                <li><a href="list_comp.php">As minhas competições</a></li>
+                <li><a href="atheletemanagement.html">Os meus treinos</a></li>
+                <li><a href="trainingsessions.html">As minhas competições</a></li>
+                <li><a href="competitions.html">As minhas disciplinas</a></li>
             </ul>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>
