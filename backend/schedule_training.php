@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         echo "<script>alert('Treino marcado com sucesso!');</script>";
-        header("Location: ../frontend/menu_coach.php");
+        header("Location: ../frontend/list_athletes.php");
         exit;
     } catch (Exception $e) {
         echo "<script>alert('Erro ao marcar treino: " . $e->getMessage() . "');</script>";

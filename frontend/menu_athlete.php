@@ -14,6 +14,9 @@ $success_message = isset($_SESSION['message']) ? $_SESSION['message'] : "";
 // Limpar as mensagens da sessão para que sejam exibidas apenas uma vez
 unset($_SESSION['error']);
 unset($_SESSION['message']);
+$athlete_id = $_SESSION['user_id'];
+$athlete_name = $_SESSION['user_name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +33,13 @@ unset($_SESSION['message']);
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
                 <li><a href="../backend/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section>
-            <h2>Bem-vindo, [Nome do Usuário]</h2>
+            <h2>Bem-vindo, <?php echo $athlete_name ?></h2>
             <ul>
                 <li><a href="list_training.php">Os meus treinos</a></li>
                 <li><a href="list_comp.php">As minhas competições</a></li>

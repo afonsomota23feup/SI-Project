@@ -62,7 +62,7 @@
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo "<tr>";
-                            echo "<td>{$row['name']}</td>";
+                            echo "<td><a href='personalAthlete.php?idAthlete={$row['idAthlete']}'>{$row['name']}</a></td>";
                             echo "<td>{$row['birthday']}</td>";
                             echo "<td>{$row['genre']}</td>";
                             echo "<td>{$row['mobile']}</td>";
