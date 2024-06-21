@@ -87,3 +87,22 @@
 --     1,
 --     3
 --   );
+
+CREATE TABLE ConditionTest (
+    idConditionTest INTEGER PRIMARY KEY AUTOINCREMENT,
+    idAthlete INT,
+    idCoachingStaff INT,
+    weight FLOAT NOT NULL,
+    height FLOAT NOT NULL,
+    backFlexibility FLOAT NOT NULL,
+    verticalThrust FLOAT NOT NULL,
+    dateTest DATE NOT NULL,
+    FOREIGN KEY (idAthlete) REFERENCES Athlete(idAthlete),
+    FOREIGN KEY (idCoachingStaff) REFERENCES CoachingStaff(idCoachingStaff),
+    UNIQUE(idConditionTest),
+    CHECK(weight > 0),
+    CHECK(height > 0),
+    CHECK(backFlexibility > 0),
+    CHECK(verticalThrust > 0),
+    CHECK(dateTest LIKE '%-%-%')
+);
