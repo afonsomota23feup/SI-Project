@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados da Competição</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../css/comp_result.css">
     <style>
         table {
             width: 100%;
@@ -49,7 +49,12 @@
 </head>
 <body>
     <header>
-        <h1>Resultados da Competição</h1>
+        <div class="header-content">
+            <h1>Resultados da Competição</h1>
+        </div>
+        <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
     </header>
     <main>
         <div class="competition-results">
@@ -102,7 +107,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>

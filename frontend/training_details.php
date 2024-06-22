@@ -11,11 +11,14 @@
             <div class="header-content">
                 <h1>Detalhes do Treino</h1>
             </div>
+            <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
+        <button class="logout-button" onclick="window.location.href='../backend/logout.php'">Logout</button>
     </header>
+
     <main>
-    <div class="logo-content">
-          <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
-    </div>
+
         <div class="training-details">
             <?php
             session_start();

@@ -5,10 +5,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%; /* Garante que o html e o body tenham 100% da altura da janela */
-}
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -17,28 +13,26 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
+    margin: 0; /* Garante que não haja margem no corpo da página */
 }
 
 header {
     background: #333;
     color: #fff;
     padding: 1rem;
-    max-height: 400px;
+    max-height: 90px;
 }
 
 .header-content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    align-items: center; /* Vertically center items */
+    padding: 0 1rem; /* Adiciona padding opcional para espaçamento */
 }
 
 .header-logo {
     max-height: 100%;
     height: auto;
-    margin-right: 0rem;
+    margin-right: 1rem; /* Espaço opcional para separar o logo do título */
 }
 
 header h1 {
@@ -68,12 +62,6 @@ section {
     max-width: 600px; /* Define uma largura máxima para o formulário */
 }
 
-section h2 {
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
-}
-
 form label {
     display: block;
     margin-bottom: 0.5rem;
@@ -93,9 +81,6 @@ form button {
 form button {
     background: #333;
     color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -105,9 +90,12 @@ form button:hover {
 }
 
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: auto; /* Garante que o footer fique no final da página */
+    padding: 25px;
+    position: sticky;
+    top: 100%;
+    bottom: 0;
+    width: 100%;
 }

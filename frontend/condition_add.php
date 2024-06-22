@@ -8,10 +8,12 @@
 </head>
 <body>
     <header>
-    <div class="header-content">
-            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        <div class="header-content">
             <h1>Adicionar Avaliação</h1>
         </div>
+        <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>  
     </header>
     <main>
         <form action="../backend/insert_condition_test.php" method="post">

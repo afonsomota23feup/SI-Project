@@ -12,6 +12,12 @@ header {
     padding: 1rem;
     max-height: 400px;
 }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
 
 .header-content {
     display: flex;
@@ -39,6 +45,16 @@ header h1 {
     position: absolute;
     top: 10px;
     left: 20px;
+}
+
+.logout-button {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Arredonda os cantos dos itens da lista */
+    text-align: center;
 }
 
 .training-details {

@@ -8,9 +8,11 @@
 </head>
 <body>
     <header>
-    <div class="header-content">
-            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        <div class="header-content">
             <h1>Formulário de teste de condição</h1>
+        </div>
+        <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
         </div>
     </header>
     <form id="conditionTestForm" action="submit_condition_test.php" method="POST">

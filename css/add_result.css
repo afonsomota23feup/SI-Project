@@ -5,10 +5,6 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%; /* Garante que o html e o body tenham 100% da altura da janela */
-}
-
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -19,35 +15,41 @@ body {
     min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
 }
 
-/* Ajuste para o header */
 header {
     background: #333;
     color: #fff;
-    padding: 1rem 0; /* Ajustado para dar mais espaço no topo e no fundo */
-    text-align: center; /* Centraliza o conteúdo do header */
+    padding: 1rem;
+    max-height: 90px;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
 .header-logo {
-    max-height: 80px; /* Ajuste de altura máxima para a imagem do logo */
+    max-height: 100%;
     height: auto;
-    margin-right: 1rem; /* Espaço entre a imagem e o título */
+    margin-right: 0rem;
 }
 
 header h1 {
+    flex: 1;
+    text-align: center;
     margin: 0;
     font-size: 2rem;
-    text-align: center; /* Centraliza o texto dentro do espaço disponível */
-    flex: 1; /* Faz o título ocupar o espaço restante */
 }
+
+.logo-content {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
 
 /* Ajuste para o main */
 main {
@@ -95,8 +97,6 @@ form button {
 form button {
     background: #333;
     color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
@@ -137,9 +137,12 @@ tfoot {
 }
 
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: auto; /* Garante que o footer fique no final da página */
+    padding: 25px;
+    position: sticky;
+    top:100%;
+    bottom: 0;
+    width: 100%;
 }

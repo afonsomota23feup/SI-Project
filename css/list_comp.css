@@ -50,43 +50,58 @@ header h1 {
     left: 20px;
 }
 
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+nav a:hover {
+    background: #B99A45;
+    border-radius: 5px;
+}
 
 main {
     flex: 1;
     padding: 2rem;
 }
 
-form {
+section {
     background: #fff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
 }
 
 form label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: bold;
 }
 
-form input[type="text"],
-form input[type="date"],
-form input[type="tel"],
-form input[type="email"],
-form select {
+form input,
+form select,
+form button {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-form input[type="hidden"] {
-    display: none; /* Ocultar o input hidden */
-}
-
-form button {
+button {
     display: inline-block;
     background: #333;
     color: #fff;
@@ -95,11 +110,40 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+}
+
+button:hover {
+    background: #B99A45;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 1rem;
 }
 
-form button:hover {
-    background: #B99A45;
+thead {
+    background: #333;
+    color: #fff;
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #555;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tfoot {
+    text-align: center;
+    padding: 1rem 0;
 }
 
 footer {
@@ -108,7 +152,45 @@ footer {
     text-align: center;
     padding: 25px;
     position: sticky;
-    top:100%;
+    top: 100%;
     bottom: 0;
     width: 100%;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container label {
+    margin-right: 10px;
+    width: auto;
+}
+
+.search-container select {
+    padding: 6px;
+    margin-top: 0;
+    font-size: 17px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: auto;
+    min-width: 200px;
+}
+
+.search-container button {
+    padding: 6px;
+    background: #333;
+    color: #fff;
+    font-size: 17px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0;
+    min-width: 100px;
+}
+
+.search-container button:hover {
+    background: #B99A45;
 }

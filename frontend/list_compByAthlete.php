@@ -49,12 +49,7 @@
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1>Minhas Competições</h1>
-        </div>
-        <div class="logo-content">
-            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
-        </div>
+        <h1>Minhas Competições</h1>
     </header>
     <main>
         <div class="competition-list">
@@ -75,7 +70,8 @@
                     session_start();
                     include '../backend/db_connect.php';
 
-                    $athlete_id = $_SESSION['user_id']; // Obtém o ID do atleta da sessão
+                    ///Obtém o ID do atleta atraves do URL
+                    $athlete_id = $_GET['idAthlete'];
 
                     try {
                         if ($conn === null) {
@@ -99,7 +95,7 @@
                             echo "<td>{$row['startTime']}</td>";
                             echo "<td>{$row['endTime']}</td>";
                             echo "<td>{$row['description']}</td>";
-                            echo "<td><a href='comp_result.php?competition_id={$row['idCompetition']}'>Resultados</a></td>";
+                            echo "<td><a href='comp_resultByAthlete.php?competition_id={$row['idCompetition']}&idAthlete={$athlete_id}'>Resultados</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
@@ -113,7 +109,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Gravity Masters Management Software</p>
+        <p>&copy; 2024 Gymnastic Club Management Software</p>
     </footer>
 </body>
 </html>

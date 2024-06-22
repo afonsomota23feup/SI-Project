@@ -28,6 +28,18 @@
             border: none;
             width: 80%;
         }
+        .add-training-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .add-training-btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +83,7 @@
         <div id="trainingContainer">
             <!-- Treinos serão exibidos aqui -->
         </div>
+        <button class="add-training-btn" onclick="window.location.href='schedule_training.php'">Adicionar Treino</button>
     </main>
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>
@@ -93,13 +106,5 @@
             }
         });
     </script>
-</body>
-</html>
-
-        <button class="add-training-btn" onclick="window.location.href='schedule_training.php'">Adicionar Treino</button>
-    </main>
-    <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
-    </footer>
 </body>
 </html>

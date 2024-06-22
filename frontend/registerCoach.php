@@ -23,7 +23,13 @@ try {
 </head>
 <body>
     <header>
-        <h1>Registro</h1>
+        <div class="header-content">
+            <h1>Registo do Treinador</h1>
+            <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
+        </div>
+
     </header>
     <main>
         <form action="../backend/register.php" method="POST">
@@ -57,7 +63,7 @@ try {
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit">Registrar</button>
+            <button type="submit">Criar</button>
         </form>
     </main>
     <footer>

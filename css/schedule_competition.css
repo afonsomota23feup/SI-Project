@@ -1,12 +1,9 @@
+
 /* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Garante que o html e o body tenham 100% da altura da janela */
 }
 
 body {
@@ -23,7 +20,7 @@ header {
     background: #333;
     color: #fff;
     padding: 1rem;
-    max-height: 400px;
+    max-height: 90px;
 }
 
 .header-content {
@@ -47,6 +44,13 @@ header h1 {
     margin: 0;
     font-size: 2rem;
 }
+
+.logo-content {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
 
 main {
     background-color: #fff;
@@ -96,8 +100,9 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
+    padding: 25px;
+    position: sticky;
+    top:100%;
     bottom: 0;
     width: 100%;
 }

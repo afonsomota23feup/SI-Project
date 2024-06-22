@@ -15,11 +15,12 @@ body {
     min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da janela */
 }
 
+
 header {
     background: #333;
     color: #fff;
     padding: 1rem;
-    max-height: 400px;
+    max-height: 90px;
 }
 
 .header-content {
@@ -151,10 +152,12 @@ tfoot {
 }
 
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
+    padding: 25px;
+    position: sticky;
+    top:100%;
+    bottom: 0;
     width: 100%;
-    flex-shrink: 0; /* Impede que o footer encolha */
 }

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Se não encontrou nenhum usuário correspondente, redireciona com erro
-        header("Location: ../frontend/login.html?error=login_failed");
+        header("Location: ../frontend/login.php?error=login_failed");
         exit;
 
     } catch (Exception $e) {

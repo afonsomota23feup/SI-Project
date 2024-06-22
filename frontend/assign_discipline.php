@@ -10,8 +10,10 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
             <h1>Associar Atleta a Disciplina</h1>
+        </div>
+        <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
         </div>
     </header>
     <main>

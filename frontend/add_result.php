@@ -43,8 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <body>
 <header>
     <div class="header-content">
-        <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
         <h1>Inserir Resultado</h1>
+    </div>
+    <div class="logo-content">
+        <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
     </div>
 </header>
 

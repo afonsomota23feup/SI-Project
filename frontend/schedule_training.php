@@ -12,10 +12,11 @@
         <div class="header-content">
                 <h1>Registar para Atleta</h1>
             </div>
-    </header>
-    <div class="logo-content">
+            <div class="logo-content">
                 <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
     </div>
+    </header>
+
     <main>
         <form action="../backend/schedule_training.php" method="post">
             <label for="athlete">Atleta:</label>

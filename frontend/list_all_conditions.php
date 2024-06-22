@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Treinos</title>
+    <title>Testes de Condição</title>
     <link rel="stylesheet" href="../css/list_training.css">
     <style>
         table {
@@ -28,21 +28,21 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Meus Treinos</h1>
-        </div>
-        <div class="logo-content">
             <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Testes de Condição</h1>
         </div>
     </header>
     <main>
         <div class="training-list">
-            <h2>Lista de Treinos</h2>
+            <h2>Lista de Testes de Condição</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Performance</th>
-                        <th>Descrição</th>
+                        <th>Data do Teste</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Flexibilidade das Costas</th>
+                        <th>Impulso Vertical</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,18 +50,17 @@
                     session_start();
                     include '../backend/db_connect.php';
 
-                    $athlete_id = $_SESSION['user_id'];
+                    $athlete_id = $_GET['idAthlete'];
 
                     try {
                         if ($conn === null) {
                             throw new Exception("Falha na conexão com o banco de dados.");
                         }
 
-                        // Consulta para obter os treinos do atleta
-                        $sql = "SELECT tr.*, n.description AS description
-            FROM TrainingReg tr
-            LEFT JOIN Notes n ON tr.idTrainingReg = n.idTrainingReg
-            WHERE tr.idAthlete = :athlete_id";
+                        // Consulta para obter os testes de condição do atleta
+                        $sql = "SELECT dateTest, weight, height, backFlexibility, verticalThrust
+                                FROM ConditionTest
+                                WHERE idAthlete = :athlete_id";
 
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':athlete_id', $athlete_id);
@@ -69,13 +68,15 @@
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo "<tr>";
-                            echo "<td>" . htmlspecialchars($row['dateTrainingReg']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['performance']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['dateTest']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['weight']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['height']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['backFlexibility']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['verticalThrust']) . "</td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='3'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='5'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;

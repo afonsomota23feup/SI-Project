@@ -25,17 +25,20 @@ $athlete_name = $_SESSION['user_name'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="..\static\styles.css">
+    <link rel="stylesheet" href="..\css\menu_athlete.css">
 </head>
 <body>
     <header>
-        <h1>Dashboard</h1>
+    <div class="header-content">
+        <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        <h1></h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="../backend/logout.php">Logout</a></li>
             </ul>
         </nav>
+    </div>
     </header>
     <main>
         <section>
@@ -43,6 +46,8 @@ $athlete_name = $_SESSION['user_name'];
             <ul>
                 <li><a href="list_training.php">Os meus treinos</a></li>
                 <li><a href="list_comp.php">As minhas competições</a></li>
+                <li><a href="list_all_conditions.php?idAthlete=<?php echo $athlete_id ?>">Os meus testes de condição</a></li>
+
             </ul>
         </section>
     </main>

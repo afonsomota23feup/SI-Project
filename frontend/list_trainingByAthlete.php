@@ -28,10 +28,8 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Meus Treinos</h1>
-        </div>
-        <div class="logo-content">
             <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+            <h1>Meus Treinos</h1>
         </div>
     </header>
     <main>
@@ -50,7 +48,7 @@
                     session_start();
                     include '../backend/db_connect.php';
 
-                    $athlete_id = $_SESSION['user_id'];
+                    $athlete_id = $_GET['idAthlete'];
 
                     try {
                         if ($conn === null) {

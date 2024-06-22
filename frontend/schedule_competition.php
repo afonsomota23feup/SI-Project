@@ -9,9 +9,11 @@
 <body>
     <header>
         <div class="header-content">
-                <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
-                <h1>Marcar Competição</h1>
-            </div>
+            <h1>Marcar Competição</h1>
+        </div>
+        <div class="logo-content">
+        <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
     </header>
     <main>
         <form action="../backend/schedule_competition.php" method="post">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Competições</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../css/list_athlete_comp.css">
     <style>
         table {
             width: 100%;
@@ -32,7 +32,12 @@
 </head>
 <body>
     <header>
-        <h1>Competições dos Atletas</h1>
+        <div class="header-content">
+            <h1>Competições dos Atletas</h1>
+        </div>
+        <div class="logo-content">
+            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
     </header>
     <main>
         <div class="competition-list">
@@ -135,7 +140,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Gymnastic Club Management Software</p>
+        <p>&copy; 2024 Gravity Masters Management Software</p>
     </footer>
 </body>
 </html>

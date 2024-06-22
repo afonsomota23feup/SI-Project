@@ -19,12 +19,6 @@ header {
     font: arial;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 20px;
-    flex-shrink: 0;
-}
-
 /* Estilos para o formulário de login e registro */
 .login-container {
     position: absolute;
@@ -32,8 +26,7 @@ footer {
     right: 20px;
 }
 
-.login-btn,
-.signup-btn {
+.login-btn {
     display: inline-block;
     width: 80px;
     height: 40px;
@@ -43,8 +36,7 @@ footer {
     margin-left: 10px;
 }
 
-.login-btn a,
-.signup-btn a {
+.login-btn a {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -59,13 +51,11 @@ footer {
     color: #111111;
 }
 
-.signup-btn {
-    background: #111111;
+.login-btn:hover {
+    background-color: #B99A45;
 }
 
-.signup-btn a {
-    color: #ffffff;
-}
+
 
 /* Estilos para o banner de boas-vindas */
 .banner-container {
@@ -95,4 +85,15 @@ footer {
 
 .banner-description {
     font-size: 24px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    position: sticky;
+    top:100%;
+    bottom: 0;
+    width: 100%;
 }
