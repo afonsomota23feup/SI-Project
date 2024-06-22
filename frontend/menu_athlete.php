@@ -29,7 +29,7 @@ $athlete_name = $_SESSION['user_name'];
 </head>
 <body>
     <header>
-        <h1>Dashboard</h1>
+        <h1></h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
