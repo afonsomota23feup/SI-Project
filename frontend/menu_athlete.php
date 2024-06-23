@@ -34,7 +34,6 @@ $athlete_name = $_SESSION['user_name'];
         <h1></h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
                 <li><a href="../backend/logout.php">Logout</a></li>
             </ul>
         </nav>
