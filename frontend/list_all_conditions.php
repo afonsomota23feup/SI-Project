@@ -58,7 +58,7 @@
                         }
 
                         // Consulta para obter os testes de condição do atleta
-                        $sql = "SELECT dateTest, weight, height, backFlexibility, verticalThrust
+                        $sql = "SELECT idConditionTest, dateTest, weight, height, backFlexibility, verticalThrust
                                 FROM ConditionTest
                                 WHERE idAthlete = :athlete_id";
 
@@ -73,10 +73,11 @@
                             echo "<td>" . htmlspecialchars($row['height']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['backFlexibility']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['verticalThrust']) . "</td>";
+                            echo "<td><a href='../backend/delete_condition_test.php?idConditionTest={$row['idConditionTest']}&idAthlete={$athlete_id}' class='delete-link' onclick='return confirm(\"Tem certeza de que deseja excluir este teste de condição?\")'>Excluir</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='5'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='6'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;

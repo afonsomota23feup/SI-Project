@@ -153,12 +153,8 @@ VALUES (1, 'Associação Académica de Espinho ', 'Praçeta Arquiteto Jerónimo 
 
 INSERT INTO Discipline (idDiscipline, name, type)
 VALUES (1, 'Ginástica Acrobática', 'Exibição'),
-       (2, 'Trampolins', 'Formação'),
-       (3, 'Trampolins', 'Competição'),
-       (4, 'Ginástica Rítmica', 'Competição'),
-       (5, 'Ginástica Rítmica', 'Exibição'),
-       (6, 'Ginástica Acrobática', 'Competição'),
-       (7, 'Ginástica Rítmica', 'Formação');
+       (2, 'Trampolins', 'Competição'),
+       (3, 'Ginástica Rítmica', 'Competição');
 
 INSERT INTO Apparatus (idApparatus, name, idDiscipline)
 VALUES (1, 'Trampolim Individual', 2),
@@ -167,53 +163,8 @@ VALUES (1, 'Trampolim Individual', 2),
        (4, 'Tumbling', 2);
 
 INSERT INTO CoachingStaff (idCoachingStaff, name, birthday, genre, mobile, email, password, address, function)
-VALUES (1, 'Afonso Mota', '2001-06-19', 'M', '912345678', 'afonso@email.com', '123456', 'Rua do Afonso', 'Treinador'),
-       (2, 'Eugénia Mota', '2004-10-05', 'F', '912345679', 'eugenia@email.com', '123456', 'Rua da Eugénia', 'Treinador');
+VALUES (1, 'Afonso Mota', '2001-06-19', 'M', '912345678', 'afonso@email.com', '123456', 'Rua do Afonso', 'Treinador');
 
-INSERT INTO Athlete (
-    idAthlete, name, birthday, genre, mobile, email, password, address, ageGroup)
-VALUES (1, 'Santiago Ramos', '2005-06-19', 'M', '912345670', 'santiago@email.com', '12234567', 'Rua do Santiago', 'Juvenil'),
-       (2, 'Mariana Silva', '2006-10-05', 'F', '912345671', 'mariana@email.com', '12234567', 'Rua da Mariana', 'Sénior');
-
-INSERT INTO TrainingReg (idTrainingReg, idCoachingStaff, idAthlete, performance, dateTrainingReg) 
-VALUES (1, 1, 1, 10, '2024-03-27'), 
-       (2, 2, 2, 9, '2024-03-27'),
-       (3, 1, 2, 8, '2024-03-27'),
-       (4, 2, 1, 7, '2024-03-27');
-
-INSERT INTO Competition (
-    idCompetition,
-    name,
-    local,
-    startTime,
-    endTime,
-    description
-)
-VALUES (
-    1,
-    'Oeiras Trampoline Cup',
-    'Oeiras',
-    '2024-03-23 09:00:00',
-    '2024-03-23 18:00:00',
-    'Competição de trampolins'
-);
-
-INSERT INTO Result (idCompetition, idAthlete, idApparatus, place, score) 
-VALUES (1, 1, 2, 2, 42.5);
-
--- Correct foreign key values for the second result entry
--- Adjust idCompetition to match the existing competition
-INSERT INTO Result (idCompetition, idAthlete, idApparatus, place, score) 
-VALUES (1, 2, 1, 12, 75.45);
-
-INSERT INTO Notes (idCoachingStaff, idTrainingReg, description)
-VALUES (2, 1, 'Não fez preparação física');
-
--- -- Registo de treino do atleta com id 1 e respetivas notas
--- SELECT TrainingReg.*, Notes.description
--- FROM TrainingReg
--- LEFT JOIN Notes ON TrainingReg.idTrainingReg = Notes.idTrainingReg
--- WHERE TrainingReg.idAthlete = 1;
 
 INSERT INTO CoachingStaffDiscipline (idCoachingStaff, idDiscipline)
 VALUES (1, 3);
