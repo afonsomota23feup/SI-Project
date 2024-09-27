@@ -70,17 +70,24 @@
                             echo "<td>{$row['mobile']}</td>";
                             echo "<td>{$row['email']}</td>";
                             echo "<td>{$row['address']}</td>";
+                            echo "<td><a href='../backend/delete_athlete.php?idAthlete={$row['idAthlete']}' onclick='return confirm(\"Tem certeza de que deseja excluir este atleta?\")'>Excluir</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='6'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='7'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;
                     ?>
                 </tbody>
+
             </table>
         </div>
+
+        <div class="back-button">
+            <a href="menu_coach.php">Voltar ao Menu Principal</a>
+        </div>
+
     </main>
     <footer>
         <p>&copy; 2024 Gravity Masters Management Software</p>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,22 @@
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
         .search-container {
             margin-bottom: 20px;
         }
+
         .search-container input[type=text] {
             padding: 6px;
             margin-top: 8px;
@@ -28,6 +34,7 @@
             border: none;
             width: 80%;
         }
+
         .search-container button {
             float: right;
             padding: 6px 10px;
@@ -38,6 +45,7 @@
             border: none;
             cursor: pointer;
         }
+
         .search-container select {
             padding: 6px;
             margin-top: 8px;
@@ -47,6 +55,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Resultados da Competição</h1>
@@ -67,20 +76,20 @@
                 }
 
                 // Consulta para obter os resultados da competição para o atleta específico
-                $sql = "SELECT A.name AS athlete_name, R.place, R.score, AP.name AS apparatus_name
-                        FROM Result R
-                        JOIN Athlete A ON R.idAthlete = A.idAthlete
-                        JOIN Apparatus AP ON R.idAparatus = AP.idApparatus
-                        WHERE R.idCompetition = :competition_id
-                        AND R.idAthlete = :athlete_id
-                        ORDER BY R.place";
+                $sql = "SELECT A.name AS athlete_name, R.place, R.score, AP.name AS apparatus_name, R.idCompetition
+            FROM Result R
+            JOIN Athlete A ON R.idAthlete = A.idAthlete
+            JOIN Apparatus AP ON R.idAparatus = AP.idApparatus
+            WHERE R.idCompetition = :competition_id
+            AND R.idAthlete = :athlete_id
+            ORDER BY R.place";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':competition_id', $competition_id);
                 $stmt->bindParam(':athlete_id', $athlete_id);
                 $stmt->execute();
 
                 echo "<table>";
-                echo "<thead><tr><th>Atleta</th><th>Aparelho</th><th>Posição</th><th>Pontuação</th></tr></thead>";
+                echo "<thead><tr><th>Atleta</th><th>Aparelho</th><th>Posição</th><th>Pontuação</th><th>Ação</th></tr></thead>";
                 echo "<tbody>";
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
@@ -88,6 +97,7 @@
                     echo "<td>{$row['apparatus_name']}</td>";
                     echo "<td>{$row['place']}</td>";
                     echo "<td>{$row['score']}</td>";
+                    echo "<td><a href='../backend/delete_competition.php?idCompetition={$row['idCompetition']}&idAthlete={$athlete_id}' onclick='return confirm(\"Tem certeza de que deseja excluir este resultado?\")'>Excluir</a></td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
@@ -99,10 +109,12 @@
 
             $conn = null;
             ?>
+
         </div>
     </main>
     <footer>
         <p>&copy; 2024 Gymnastic Club Management Software</p>
     </footer>
 </body>
+
 </html>

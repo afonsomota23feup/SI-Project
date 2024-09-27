@@ -60,7 +60,6 @@
                         <th>Nome</th>
                         <th>Local</th>
                         <th>Data de Início</th>
-                        <th>Data de Fim</th>
                         <th>Descrição</th>
                         <th>Resultados</th>
                     </tr>
@@ -70,7 +69,6 @@
                     session_start();
                     include '../backend/db_connect.php';
 
-                    ///Obtém o ID do atleta atraves do URL
                     $athlete_id = $_GET['idAthlete'];
 
                     try {
@@ -79,7 +77,7 @@
                         }
 
                         // Consulta para obter as competições em que o atleta participou
-                        $sql = "SELECT DISTINCT C.idCompetition, C.name, C.local, C.startTime, C.endTime, C.description
+                        $sql = "SELECT DISTINCT C.idCompetition, C.name, C.local, C.startTime, C.description
                                 FROM Competition C
                                 JOIN Result R ON C.idCompetition = R.idCompetition
                                 WHERE R.idAthlete = :athlete_id
@@ -93,13 +91,12 @@
                             echo "<td>{$row['name']}</td>";
                             echo "<td>{$row['local']}</td>";
                             echo "<td>{$row['startTime']}</td>";
-                            echo "<td>{$row['endTime']}</td>";
                             echo "<td>{$row['description']}</td>";
                             echo "<td><a href='comp_resultByAthlete.php?competition_id={$row['idCompetition']}&idAthlete={$athlete_id}'>Resultados</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='6'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='7'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;

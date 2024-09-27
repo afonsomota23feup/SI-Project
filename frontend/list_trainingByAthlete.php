@@ -41,10 +41,11 @@
                         <th>Data</th>
                         <th>Performance</th>
                         <th>Descrição</th>
+                        <th>Aparelho</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                <?php
                     session_start();
                     include '../backend/db_connect.php';
 
@@ -55,11 +56,12 @@
                             throw new Exception("Falha na conexão com o banco de dados.");
                         }
 
-                        // Consulta para obter os treinos do atleta
-                        $sql = "SELECT tr.*, n.description AS description
-            FROM TrainingReg tr
-            LEFT JOIN Notes n ON tr.idTrainingReg = n.idTrainingReg
-            WHERE tr.idAthlete = :athlete_id";
+                        // Consulta para obter os treinos do atleta com o nome do aparelho
+                        $sql = "SELECT tr.*, n.description AS description, a.name AS apparatus_name
+                                FROM TrainingReg tr
+                                LEFT JOIN Notes n ON tr.idTrainingReg = n.idTrainingReg
+                                LEFT JOIN Apparatus a ON tr.apparatus = a.idApparatus
+                                WHERE tr.idAthlete = :athlete_id";
 
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':athlete_id', $athlete_id);
@@ -70,14 +72,17 @@
                             echo "<td>" . htmlspecialchars($row['dateTrainingReg']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['performance']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['description']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['apparatus_name']) . "</td>"; // Nome do aparelho
+                            echo "<td><a href='../backend/delete_training.php?idTrainingReg={$row['idTrainingReg']}&idAthlete={$athlete_id}' onclick='return confirm(\"Tem certeza de que deseja excluir este treino?\")'>Excluir</a></td>";
                             echo "</tr>";
                         }
                     } catch (Exception $e) {
-                        echo "<tr><td colspan='3'>Erro: " . $e->getMessage() . "</td></tr>";
+                        echo "<tr><td colspan='5'>Erro: " . $e->getMessage() . "</td></tr>";
                     }
 
                     $conn = null;
                     ?>
+
                 </tbody>
             </table>
         </div>

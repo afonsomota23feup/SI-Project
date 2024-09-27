@@ -16,13 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Inserir treino na tabela TrainingReg
-        $sql = "INSERT INTO TrainingReg (idCoachingStaff, idAthlete, performance, dateTrainingReg)
-                VALUES (:coach_id, :athlete_id, :performance, :training_date)";
+        $sql = "INSERT INTO TrainingReg (idCoachingStaff, idAthlete, performance, dateTrainingReg, apparatus)
+                VALUES (:coach_id, :athlete_id, :performance, :training_date, :apparatus)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':coach_id', $coach_id);
         $stmt->bindParam(':athlete_id', $athlete_id);
         $stmt->bindParam(':performance', $performance);
         $stmt->bindParam(':training_date', $training_date);
+        $stmt->bindParam(':apparatus', $apparatus_id);
         $stmt->execute();
 
         // Obter o ID do treino inserido

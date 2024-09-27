@@ -166,6 +166,27 @@ tfoot {
     background: #6d6d6d;
 }
 
+
+
+.back-button {
+    text-align: center; /* Centraliza o conteúdo */
+    margin-top: 1rem; /* Espaçamento superior */
+}
+
+.back-button a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button a:hover {
+    background-color: #B99A45; /* Cor de fundo no hover */
+}
+
 footer {
     background-color: #333;
     color: #fff;
@@ -176,3 +197,4 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
