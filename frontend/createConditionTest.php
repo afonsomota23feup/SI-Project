@@ -50,9 +50,20 @@
         <input type="number" id="verticalThrust" name="verticalThrust" step="0.1" min="0.1" required>
         <br>
 
+        <label for="tenMax"> 10 Vertical Max </label>
+        <input type="number" id="tenMax" name="tenMax" step="0.1" min="0.1" required>
+        <br>
+
+        <label for="tenOnly">10 Vertical</label>
+        <input type="number" id="tenOnly" name="tenOnly" step="0.1" min="0.1" required>
+        <br>
+
+
         <label for="dateTest">Date of Test:</label>
         <input type="date" id="dateTest" name="dateTest" required>
         <br>
+
+
 
         <input type="submit" value="Submit">
     </form>

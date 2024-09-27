@@ -19,15 +19,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Determinar o grupo etário com base na idade
     if ($age >= 17) {
-        $ageGroup = 'Senior';
-    } elseif ($age >= 15  && $age < 17) {
-        $ageGroup = 'Junior';
-    } elseif ($age >= 13 && $age < 15) {
-        $ageGroup = 'Juvenil';
-    } elseif ($age >= 11 && $age < 13) {
-        $ageGroup = 'Iniciado';
+        $ageGroup = '17+';
+    } elseif ($age >= 15 && $age <= 16) {
+        $ageGroup = '15-16';
+    } elseif ($age >= 13 && $age <= 14) {
+        $ageGroup = '13-14';
+    } elseif ($age >= 11 && $age <= 12) {
+        $ageGroup = '11-12';
+    } elseif ($age >= 9 && $age <= 10) {
+        $ageGroup = '9-10';
+    } elseif ($age >= 7 && $age <= 8) {
+        $ageGroup = '7-8';
     } else {
-        $ageGroup = 'Infantil'; 
+        $ageGroup = 'Under 7'; 
     }
 
     try {
@@ -50,16 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':ageGroup', $ageGroup);
+
         $stmt->execute();
 
-        echo "<script>alert('Registro realizado com sucesso!');</script>";
+        echo "Registro inserido com sucesso!";
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
-
-    // Fechar a conexão
-    $conn = null;
-    header("Location: ../frontend/list_athletes.php ");
-    exit;
 }
 ?>

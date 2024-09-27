@@ -9,12 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $height = $_POST['height'];
     $backFlexibility = $_POST['backFlexibility'];
     $verticalThrust = $_POST['verticalThrust'];
+    $tenMax = $_POST['tenMax'];
+    $tenOnly = $_POST['tenOnly'];
     $dateTest = $_POST['dateTest'];
 
     try {
         // Preparar a consulta SQL usando prepared statements
-        $sql = "INSERT INTO ConditionTest (idAthlete, idCoachingStaff, weight, height, backFlexibility, verticalThrust, dateTest)
-                VALUES (:idAthlete, :idCoachingStaff, :weight, :height, :backFlexibility, :verticalThrust, :dateTest)";
+        $sql = "INSERT INTO ConditionTest (idAthlete, idCoachingStaff, weight, height, backFlexibility, verticalThrust, tenMax, tenOnly, dateTest)
+                VALUES (:idAthlete, :idCoachingStaff, :weight, :height, :backFlexibility, :verticalThrust, :tenMax, :tenOnly, :dateTest)";
         $stmt = $conn->prepare($sql);
 
         // Associar os parâmetros aos valores do formulário
