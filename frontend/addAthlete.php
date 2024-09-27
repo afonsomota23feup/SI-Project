@@ -43,6 +43,10 @@
                 <input type="email" id="email" name="email" required>
                 <br>
 
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+
                 <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" required>
                 <br>

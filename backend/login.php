@@ -3,7 +3,7 @@ session_start();
 include __DIR__ . '/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
     try {
@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Verificar se é um Atleta
-        $sqlAthlete = "SELECT idAthlete AS id, name, password FROM Athlete WHERE email = :email";
+        $sqlAthlete = "SELECT idAthlete AS id, name, password FROM Athlete WHERE username = :username";
         $stmtAthlete = $conn->prepare($sqlAthlete);
         $stmtAthlete->bindParam(':email', $email);
         $stmtAthlete->execute();
