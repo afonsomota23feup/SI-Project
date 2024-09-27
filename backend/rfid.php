@@ -33,14 +33,17 @@ $tag = $data['tag'];
 // Passo 1: Verificar se o UID da tag RFID está associado a um atleta
 $stmt = $conn->prepare('SELECT * FROM Athlete WHERE tag_uid = :tag');
 if (!$stmt) {
-    // Se a preparação da consulta falhar
-    $response = array(
-        "status" => "Erro",
-        "message" => "Erro ao preparar a consulta"
-    );
-    header('Content-Type: application/json');
-    echo json_encode($response);
-    exit();
+    // Se a preparação da consulta falhar, tentar a tabela CoachingStaff
+    $stmt = $conn->prepare('SELECT * FROM CoachingStaff WHERE tag_uid = :tag');
+    if (!$stmt) {
+        $response = array(
+            "status" => "Erro",
+            "message" => "Erro ao preparar a consulta"
+        );
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
 }
 
 $stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
