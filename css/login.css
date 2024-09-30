@@ -44,10 +44,10 @@ form {
 }
 
 /* Estilo para os campos de entrada e botão */
-input[type="email"],
+input[type="text"],
 input[type="password"],
 button {
-    width: 100%;
+    width: 100%; /* Garante que todos os inputs e o botão tenham o mesmo tamanho */
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -92,4 +92,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
-

@@ -5,6 +5,7 @@ include __DIR__ . '/db_connect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $email = $username; // Supondo que 'username' é o 'email' para treinadores
 
     try {
         if ($conn === null) {
@@ -14,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar se é um Atleta
         $sqlAthlete = "SELECT idAthlete AS id, name, password FROM Athlete WHERE username = :username";
         $stmtAthlete = $conn->prepare($sqlAthlete);
-        $stmtAthlete->bindParam(':email', $email);
+        $stmtAthlete->bindParam(':username', $username); // Correção aqui
         $stmtAthlete->execute();
         $athlete = $stmtAthlete->fetch(PDO::FETCH_ASSOC);
 
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtCoach->execute();
         $coach = $stmtCoach->fetch(PDO::FETCH_ASSOC);
 
-        if ($coach && ( $password === $coach['password'] || password_verify($password, $coach['password']))) {
+        if ($coach && (password_verify($password, $coach['password']) || $password === $coach['password'])) {
             $_SESSION['user_id'] = $coach['id'];
             $_SESSION['user_name'] = $coach['name'];
             $_SESSION['user_role'] = 'coach';
@@ -51,5 +52,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erro: " . $e->getMessage();
     }
 }
-
 ?>
