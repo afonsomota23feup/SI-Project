@@ -40,6 +40,7 @@ $results = fetchResultsAndDetailsOfCompetitionAthlete($idAthlete);
             <p><strong>Nome:</strong> <?php echo htmlspecialchars($athlete['name']); ?></p>
             <p><strong>Data de Nascimento:</strong> <?php echo htmlspecialchars($athlete['birthday']); ?></p>
             <p><strong>Género:</strong> <?php echo htmlspecialchars($athlete['genre']); ?></p>
+            <p><strong>Escalão:</strong> <?php echo htmlspecialchars($athlete['ageGroup']);?> </p>
             <p><strong>Telefone:</strong> <?php echo htmlspecialchars($athlete['mobile']); ?></p>
             <p><strong>Email:</strong> <?php echo htmlspecialchars($athlete['email']); ?></p>
             <p><strong>Endereço:</strong> <?php echo htmlspecialchars($athlete['address']); ?></p>
