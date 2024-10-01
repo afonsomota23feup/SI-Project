@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Definir mensagem de sucesso
         $_SESSION['success'] = "Atleta associado à disciplina com sucesso!";
-        header("Location: ../frontend/menu_coach.php");
+        header("Location: ../frontend/assign_discipline.php");
         exit;
     } catch (Exception $e) {
         // Em caso de erro, definir mensagem de erro e redirecionar
