@@ -10,7 +10,7 @@
     <div class="banner-container">
     <img class="banner-image" src="..\imagens\logo3.png" alt="Login Image">
         <form action="../backend/login.php" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
+            <input type="text" name="username" placeholder="Usernames" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
                 <div class="error-message">

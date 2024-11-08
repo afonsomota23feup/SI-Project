@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Avaliação</title>
-    <link rel="stylesheet" href="../css/condition_add.css">
+    <link rel="stylesheet" href="../css/condition_add.css"> <!-- Link to the CSS file -->
 </head>
 <body>
     <header>
@@ -12,8 +12,8 @@
             <h1>Adicionar Avaliação</h1>
         </div>
         <div class="logo-content">
-            <img src="..\imagens\teste.png" alt="Logo do Clube" class="header-logo">
-        </div>  
+            <img src="../imagens/teste.png" alt="Logo do Clube" class="header-logo">
+        </div>
     </header>
     <main>
         <form action="../backend/insert_condition_test.php" method="post">
@@ -24,7 +24,7 @@
                 session_start();
                 include '../backend/db_connect.php';
 
-                // Query para obter os atletas do treinador logado
+                // Fetch athletes of the logged-in coach
                 $coach_id = $_SESSION['user_id'];
                 $sql = "SELECT A.idAthlete, A.name 
                         FROM Athlete A 
@@ -35,7 +35,7 @@
                 $stmt->bindParam(':coach_id', $coach_id);
                 $stmt->execute();
 
-                // Preencher as opções do select com os atletas obtidos
+                // Populate the select options with fetched athletes
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<option value='{$row['idAthlete']}'>{$row['name']}</option>";
                 }

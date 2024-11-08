@@ -43,7 +43,7 @@
                 <tbody>
                     <?php
                     session_start();
-                    include '../backend/db_connect.php';
+                    include __DIR__ . '/../backend/db_connect.php';
 
                     $coach_id = $_SESSION['user_id'];
 
