@@ -28,21 +28,57 @@ try {
 
 // Check if a specific athlete is selected
 $athleteId = isset($_GET['idAthlete']) ? $_GET['idAthlete'] : null;
+$selectedMonth = isset($_GET['month']) ? str_pad($_GET['month'], 2, '0', STR_PAD_LEFT) : date('m'); // Default to current month
+$selectedYear = isset($_GET['year']) ? $_GET['year'] : date('Y'); // Default to current year
 $data = [];
+$totalTrainings = 0;
 
 if ($athleteId) {
     try {
+        // Query to fetch attendance records
         $stmt = $conn->prepare("
             SELECT Presencas.idpresenca, Athlete.name AS athlete_name, Presencas.tag_uid, Presencas.status, Presencas.timestamp
             FROM Presencas
             JOIN Athlete ON Presencas.idAthlete = Athlete.idAthlete
-            WHERE Presencas.idAthlete = ?
+            WHERE Presencas.idAthlete = :athleteId
+            AND strftime('%m', Presencas.timestamp) = :month
+            AND strftime('%Y', Presencas.timestamp) = :year
+            ORDER BY Presencas.timestamp ASC
         ");
-        $stmt->execute([$athleteId]);
+        $stmt->bindParam(':athleteId', $athleteId, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $selectedMonth, PDO::PARAM_STR);
+        $stmt->bindParam(':year', $selectedYear, PDO::PARAM_STR);
+        $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Query to count "Entradas" for the selected month and year
+        $stmt = $conn->prepare("
+            SELECT COUNT(*) AS total_trainings
+            FROM Presencas
+            WHERE idAthlete = :athleteId
+            AND status = 'Entrada'
+            AND strftime('%m', timestamp) = :month
+            AND strftime('%Y', timestamp) = :year
+        ");
+        $stmt->bindParam(':athleteId', $athleteId, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $selectedMonth, PDO::PARAM_STR);
+        $stmt->bindParam(':year', $selectedYear, PDO::PARAM_STR);
+        $stmt->execute();
+        $totalTrainings = $stmt->fetchColumn();
+        
     } catch (PDOException $e) {
         echo "Erro ao buscar presenças: " . $e->getMessage();
     }
+}
+
+// Process data to group by date with Entry and Exit pairs
+$attendanceData = [];
+foreach ($data as $row) {
+    $date = date('Y-m-d', strtotime($row['timestamp'])); // Group by date
+    if (!isset($attendanceData[$date])) {
+        $attendanceData[$date] = [];
+    }
+    $attendanceData[$date][] = $row;
 }
 
 // Export data if requested
@@ -126,8 +162,6 @@ if (isset($_POST['export'])) {
             font-weight: bold;
         }
 
-        form input[type="number"],
-        form input[type="date"],
         form select {
             width: 100%;
             padding: 0.5rem;
@@ -202,26 +236,52 @@ if (isset($_POST['export'])) {
                     </option>
                 <?php endforeach; ?>
             </select>
+
+            <label for="month">Mês:</label>
+            <select id="month" name="month" required>
+                <?php for ($m = 1; $m <= 12; $m++): ?>
+                    <option value="<?php echo str_pad($m, 2, '0', STR_PAD_LEFT); ?>" <?php echo ($selectedMonth == str_pad($m, 2, '0', STR_PAD_LEFT)) ? 'selected' : ''; ?>>
+                        <?php echo date('F', mktime(0, 0, 0, $m, 10)); ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+
+            <label for="year">Ano:</label>
+            <select id="year" name="year" required>
+                <?php for ($y = date('Y'); $y >= 2000; $y--): ?>
+                    <option value="<?php echo $y; ?>" <?php echo ($selectedYear == $y) ? 'selected' : ''; ?>>
+                        <?php echo $y; ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+
             <button type="submit">Ver Dados</button>
-            <button onclick="href='menu_coach.php'">Menu</button>
+            <li><a href="menu_coach.php">Back to Menu</a></li>
 
         </form>
 
+        <?php if ($athleteId): ?>
+            <h2>Total de Treinos no Mês: <?php echo $totalTrainings; ?></h2>
+        <?php endif; ?>
+
         <?php if ($data): ?>
-            <table>
-                <tr>
-                    <th>Nome do Atleta</th>
-                    <th>Status</th>
-                    <th>Timestamp</th>
-                </tr>
-                <?php foreach ($data as $row): ?>
+            <?php foreach ($attendanceData as $date => $records): ?>
+                <h2>Data: <?php echo $date; ?></h2>
+                <table>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['athlete_name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['status']); ?></td>
-                        <td><?php echo htmlspecialchars($row['timestamp']); ?></td>
+                        <th>Nome do Atleta</th>
+                        <th>Status</th>
+                        <th>Horário</th>
                     </tr>
-                <?php endforeach; ?>
-            </table>
+                    <?php foreach ($records as $row): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['athlete_name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
+                            <td><?php echo htmlspecialchars($row['timestamp']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            <?php endforeach; ?>
 
             <form method="post">
                 <button type="submit" name="export">Exportar para CSV</button>

@@ -24,6 +24,8 @@
                     <li><a href="list_competition.php">Adicionar Resultado</a></li>
                     <li><a href="condition_add.php">Adicionar Avaliação Física</a></li>
                     <li><a href="addAthlete.php">Registar Atleta</a></li>
+                    <li><a href="listAthletebyTraining.php">Ver Atleta presentes no treino </a></li>
+
                 </ul>
             </nav>
         </div>
