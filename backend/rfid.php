@@ -2,7 +2,7 @@
 session_start();
 include __DIR__ . '/db_connect.php';
 
-// Check if database connection was established successfully
+// Verifique se a conexão ao banco foi estabelecida corretamente
 if (!$conn) {
     $response = array(
         "status" => "Erro",
@@ -13,11 +13,10 @@ if (!$conn) {
     exit();
 }
 
-// Receive data sent from ESP32 or interface
+// Receber os dados enviados pelo ESP32 ou interface
 $data = json_decode(file_get_contents('php://input'), true);
-var_dump($data);
 
-// Check if the RFID tag was received
+// Verificar se a tag foi recebida
 if (!isset($data['tag'])) {
     $response = array(
         "status" => "Erro",
@@ -30,10 +29,9 @@ if (!isset($data['tag'])) {
 
 $tag = $data['tag']; 
 
-// Step 1: Check if the RFID tag UID is associated with an athlete
+// Passo 1: Verificar se o UID da tag RFID está associado a um atleta
 $stmt = $conn->prepare('SELECT * FROM Athlete WHERE tag_uid = :tag');
 if (!$stmt) {
-    // If the query preparation fails, try the CoachingStaff table
     $stmt = $conn->prepare('SELECT * FROM CoachingStaff WHERE tag_uid = :tag');
     if (!$stmt) {
         $response = array(
@@ -49,7 +47,7 @@ if (!$stmt) {
 $stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
 $stmt->execute();
 
-// Check if the query execution failed
+// Verifique se a execução da consulta falhou
 if ($stmt->errorCode() !== '00000') {
     $response = array(
         "status" => "Erro",
@@ -60,28 +58,29 @@ if ($stmt->errorCode() !== '00000') {
     exit();
 }
 
-// If the athlete was found
+// Se o atleta foi encontrado
 if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $idAthlete = $row['idAthlete'];
     $name = $row['name'];
 
-    // Step 2: Check the last presence record for the athlete for today
-    $sql = 'SELECT status FROM Presencas WHERE idAthlete = :idAthlete AND DATE(timestamp) = CURDATE() ORDER BY timestamp DESC LIMIT 1';
+    // Passo 2: Verificar o último registro de presença do atleta para determinar se é "Entrada" ou "Saída"
+    $sql = "SELECT status, timestamp FROM Presencas 
+            WHERE idAthlete = :idAthlete 
+            AND DATE(timestamp) = DATE('now') 
+            ORDER BY timestamp DESC LIMIT 1";
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':idAthlete', $idAthlete, PDO::PARAM_INT);
+    $stmt->bindParam(':idAthlete', $idAthlete, PDO::PARAM_INT);
     $stmt->execute();
     $lastEntry = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Determine the new status based on the last status
-    if ($lastEntry) {
-        $lastStatus = $lastEntry['status'];
-        $newStatus = ($lastStatus == 'Entrada') ? 'Saída' : 'Entrada';
+    // Define o novo status com base no último registro
+    if ($lastEntry && $lastEntry['status'] === 'Entrada') {
+        $newStatus = 'Saída';
     } else {
-        // If no record exists for today, start with "Entrada"
         $newStatus = 'Entrada';
     }
 
-    // Step 3: Insert the new presence record in the `Presencas` table
+    // Passo 3: Registrar a presença com o status definido
     $stmt = $conn->prepare('INSERT INTO Presencas (idAthlete, tag_uid, status, timestamp) VALUES (:idAthlete, :tag, :status, CURRENT_TIMESTAMP)');
     if (!$stmt) {
         $response = array(
@@ -97,14 +96,13 @@ if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $stmt->bindValue(':tag', $tag, PDO::PARAM_STR);
     $stmt->bindValue(':status', $newStatus, PDO::PARAM_STR);
 
-    // Check if the insertion was successful
+    // Verificar se a inserção foi bem-sucedida
     if ($stmt->execute()) {
         $response = array(
             "status" => "Sucesso",
-            "message" => "Presença registrada como $newStatus para o atleta: $name",
+            "message" => "Presença registrada para o atleta: $name",
             "idAthlete" => $idAthlete,
-            "name" => $name,
-            "status" => $newStatus
+            "name" => $name
         );
     } else {
         $response = array(
@@ -113,14 +111,14 @@ if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         );
     }
 } else {
-    // If no athlete is found with the provided tag
+    // Se não encontrar o atleta com a tag fornecida
     $response = array(
         "status" => "Erro",
         "message" => "Tag RFID não associada a nenhum atleta"
     );
 }
 
-// Return response in JSON
+// Retornar resposta em JSON
 header('Content-Type: application/json');
 echo json_encode($response);
 ?>

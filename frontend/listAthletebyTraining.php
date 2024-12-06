@@ -15,7 +15,7 @@ if ($selectedDate) {
     try {
         // Consulta para buscar atletas que registraram "Entrada" na data selecionada
         $stmt = $conn->prepare("
-            SELECT DISTINCT Athlete.idAthlete, Athlete.name, Athlete.ageGroup, Athlete.birthday
+            SELECT DISTINCT Athlete.idAthlete, Athlete.name, Athlete.ageGroup, Athlete.birthday, Presencas.timestamp
             FROM Presencas
             JOIN Athlete ON Presencas.idAthlete = Athlete.idAthlete
             WHERE Presencas.status = 'Entrada'
@@ -173,11 +173,13 @@ if ($selectedDate) {
                 <tr>
                     <th>Nome</th>
                     <th>Escalão</th>
+                    <th>Horário</th>
                 </tr>
                 <?php foreach ($presentAthletes as $athlete): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($athlete['name']); ?></td>
                         <td><?php echo htmlspecialchars($athlete['ageGroup']); ?></td>
+                        <td><?php echo htmlspecialchars(date('H:i', strtotime($athlete['timestamp']))); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
