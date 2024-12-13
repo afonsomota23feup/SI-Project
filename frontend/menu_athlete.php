@@ -46,7 +46,7 @@ $athlete_name = $_SESSION['user_name'];
                 <li><a href="list_training.php">Os meus treinos</a></li>
                 <li><a href="list_comp.php">As minhas competições</a></li>
                 <li><a href="list_all_conditions.php?idAthlete=<?php echo $athlete_id ?>">Os meus testes de condição</a></li>
-
+                <li><a href="lista_all_presences.php?idAthlete=<?php echo $athlete_id ?>">As minhas presenças</a></li>
             </ul>
         </section>
     </main>

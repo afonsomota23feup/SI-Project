@@ -43,7 +43,7 @@
                 <input type="email" id="email" name="email" required>
                 <br>
 
-                <label for="username">Email:</label>
+                <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <br>
 

@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = $_POST['genre']; // Corrigido para usar o nome correto do campo
     $phone = $_POST['mobile']; // Corrigido para usar o nome correto do campo
     $email = $_POST['email'];
+    $username = $_POST['username']; // Corrigido para usar o nome correto do campo
     $address = $_POST['address'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $ageGroup = $_POST['ageGroup']; // Adicionado para capturar o grupo de idade
@@ -41,8 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Inserir dados na tabela Athlete
-        $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email, address, password, ageGroup) 
-                VALUES (:name, :birthdate, :gender, :phone, :email, :address, :password, :ageGroup)";
+        $sql = "INSERT INTO Athlete (name, birthday, genre, mobile, email,username, address, password, ageGroup) 
+                VALUES (:name, :birthdate, :gender, :phone, :email, :username, :address, :password, :ageGroup)";
 
         // Preparar e executar a query
         $stmt = $conn->prepare($sql);
@@ -51,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':gender', $gender);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':username', $username);
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':ageGroup', $ageGroup);
