@@ -22,6 +22,8 @@
             <li><a href="schedule_competition.php">Marcar Competição</a></li>
             <li><a href="registerCoach.php">Registar Novo Treinador</a></li>
             <li><a href="view_attendance.php">Ver e Exportar Presenças</a></li>
+            <li><a href="list_all_athletes.php">Ver todos os atletas</a></li>
+            
         </ul>
     </nav>
     <main>
